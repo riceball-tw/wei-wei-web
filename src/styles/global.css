@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-color-50: 248 250 251;
+    --primary-color-100: 235 239 251;
+    --primary-color-200: 214 214 247;
+    --primary-color-300: 180 178 236;
+    --primary-color-400: 151 137 222;
+    --primary-color-500: 126 101 210;
+    --primary-color-600: 103 73 190;
+    --primary-color-700: 78 54 155;
+    --primary-color-800: 54 38 110;
+    --primary-color-900: 34 24 75;
+    --primary-color-1000: 13 10 40;
+    --accent-color: 255 206 71;
+  }
+}
