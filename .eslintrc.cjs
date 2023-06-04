@@ -7,7 +7,14 @@ module.exports = {
     'plugin:astro/jsx-a11y-recommended',
     'prettier',
   ],
-  // ...
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.astro', '.ts', '.tsx', '.js', '.jsx', '.json', '.vue'],
+      },
+    },
+  },
   overrides: [
     {
       // Define the configuration for `.astro` file.
