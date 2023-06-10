@@ -1,15 +1,26 @@
 ---
+import Base from '@/layouts/Base.astro';
+import Banner from '@/components/Banner.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<Base title="首頁">
+  <main class="md:min-h-screen min-h-auto">
+    <Banner>
+      <h1 class="text-3xl md:text-6xl font-semibold px-4">
+        哈囉，我是黃宗瑋，<br />
+        我撰寫超過 50 篇<a class="highlight" href="https://www.webdong.dev/post/">技術文章</a>紀錄與傳達知識，幫助 800
+        位以上的同學消除他們的疑惑。可以觀賞<a class="highlight" href="/work">作品集</a>了解我是如何解決真實世界問題的。
+      </h1>
+    </Banner>
+
+    <section class="mb-16">
+      <h2 class="sr-only">最新作品</h2>
+      <div style="background-color: black;" class="aspect-video flex justify-center mx-4 rounded-lg">
+        <video class="w-full h-full" width="720" height="540" autoplay loop muted playsinline poster="">
+          <source src="/assets/global/hero.webm" type="video/webm" />
+          <source src="/assets/global/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+  </main>
+</Base>
