@@ -1,0 +1,72 @@
+---
+import { SEO } from 'astro-seo';
+import '@/styles/global.css';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const globalTitle = `${title || '頁面'} - 黃宗瑋個人作品集`;
+const globalDescription = `${
+  description || '哈囉，我是宗瑋，一位前端技術部落格的經營者、一個線上課程助教、一個獨立接案兼通網頁設計與開發的人。'
+}`;
+const globalOgImage = '/assets/global/og-image.jpg';
+const globalOgImageAlt = '一個英文手寫字寫著 Wei 的 Logo 在一個淺白底上';
+---
+
+<!DOCTYPE html>
+<html class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang="zh-Hant-TW">
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/global/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/global/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/global/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <SEO
+      charset="UTF-8"
+      title={globalTitle}
+      description={globalDescription}
+      openGraph={{
+        basic: {
+          title: `${globalTitle}`,
+          type: 'website',
+          image: `${globalOgImage}`,
+        },
+        image: {
+          type: 'image/jpeg',
+          alt: `${globalOgImageAlt}`,
+          height: 630,
+          width: 1200,
+        },
+      }}
+      twitter={{
+        title: `${globalTitle}`,
+        description: `${globalDescription}`,
+        image: `${globalOgImage}`,
+        imageAlt: `${globalOgImageAlt}`,
+      }}
+      extend={{
+        meta: [
+          {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1',
+          },
+        ],
+      }}
+    />
+  </head>
+  <body
+    style='background-color: #f5f5f5;
+    background-image: url("/assets/global/natural-paper.webp"); background-attachment: fixed'
+  >
+    <Navbar />
+    <div style="margin-top: calc(var(--navbar-height) * -1);">
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>
