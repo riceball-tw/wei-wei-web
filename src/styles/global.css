@@ -15,6 +15,36 @@
     --primary-color-800: 54 38 110;
     --primary-color-900: 34 24 75;
     --primary-color-1000: 13 10 40;
-    --accent-color: 255 206 71;
+    --accent-color: 255 168 8;
+    --accent-color-hex: #ffa808;
+    --navbar-height: 10rem;
+  }
+
+  .highlight {
+    @apply relative;
+  }
+
+  .highlight::after {
+    @apply absolute bottom-1 left-0 block w-full md:h-2 h-0.5 opacity-60 bg-accent transition-all rounded  -z-10;
+    content: '';
+    background-image: url('/assets/global/highlight-texture.webp');
+    background-size: 400px;
+    background-repeat: repeat;
+    animation: resize 3s infinite;
+    animation-timing-function: steps(12, start);
+  }
+
+  .highlight:hover::after {
+    @apply -skew-x-3;
+    height: 80%;
+  }
+
+  @keyframes resize {
+    0% {
+      background-position: top left;
+    }
+    100% {
+      background-position: bottom right;
+    }
   }
 }
