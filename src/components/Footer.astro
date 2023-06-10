@@ -1,0 +1,82 @@
+---
+const socials = [
+  {
+    name: 'Blog',
+    url: 'https://www.webdong.dev/',
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/riceball-tw',
+  },
+  {
+    name: 'Behance',
+    url: 'https://www.behance.net/riceballwei',
+  },
+  {
+    name: 'CakeResume',
+    url: 'https://www.cakeresume.com/me/Riceball-wei',
+  },
+];
+---
+
+<footer class="container mx-auto px-4 py-8">
+  <div class="flex flex-wrap justify-between mb-8">
+    <h2 class="text-3xl md:text-5xl mb-8">
+      <span class="font-bold">想要聯絡我？</span>
+      <span class="text-primary-700">
+        <br />
+        可以透過 <button class="highlight" data-mail-btn="bottle200918@gmail.com">Email</button> 或其他平台。
+      </span>
+    </h2>
+
+    <div>
+      <h3 class="text-lg font-medium mb-4 sr-only lg:not-sr-only">其他管道</h3>
+      <ul>
+        {
+          socials.map((social) => (
+            <li>
+              <a
+                class="hover:bg-primary-100 rounded-full transition-colors p-4 ml-0 lg:-ml-4 inline-block"
+                href={social.url}
+                target="_blank"
+              >
+                {social.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="flex justify-between">
+    <p class="opacity-80">All Right Reserved 2023-PRESENT © 黃宗瑋</p>
+
+    <span>🍙</span>
+  </div>
+</footer>
+
+<script is:inline>
+  document.querySelector('[data-mail-btn]').addEventListener('click', (e) => {
+    navigator.clipboard.writeText(e.target.dataset.mailBtn);
+
+    function showPopover(targetElement) {
+      targetElement.disabled = true;
+      const popover = document.createElement('div');
+      popover.textContent = '✔ 已複製到剪貼簿';
+      targetElement.appendChild(popover);
+      popover.style.position = 'absolute';
+      popover.style.fontSize = '1rem';
+      popover.style.letterSpacing = '0.05rem';
+      popover.style.whiteSpace = 'nowrap';
+      popover.style.left = '50%';
+      popover.style.transform = 'translate(-50%, 0%)';
+
+      setTimeout(() => {
+        targetElement.removeChild(popover);
+        targetElement.disabled = false;
+      }, 1000);
+    }
+
+    showPopover(e.target);
+  });
+</script>
