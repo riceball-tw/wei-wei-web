@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Banner from '@/components/Banner.astro';
+
+const projects = await getCollection('project', ({ data }) => !data.draft);
+const sortedProjects = projects.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+---
+
+<Base title="作品">
+  <div class="p-4 md:p-16">
+    <main class="min-h-screen">
+      <Banner>
+        <h1 class="text-3xl md:text-5xl font-medium">歡迎，<br />來看看我的最新作品！</h1>
+      </Banner>
+
+      <section class="container mx-auto">
+        <h2 class="sr-only">所有作品一共 {projects.length} 件</h2>
+
+        <ul class="grid lg:grid-cols-2 grid-cols-1 gap-8">
+          {
+            sortedProjects.map((project, index) => {
+              const imagesInsideView = 2;
+              return (
+                <li>
+                  {project.data.video ? (
+                    <video
+                      class="mx-auto mb-6 rounded-lg"
+                      width="720"
+                      height="540"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      poster={project.data.thumbnail.src}
+                    >
+                      {project.data.video.map((source) => (
+                        <source src={source.src} type={source.type} />
+                      ))}
+                    </video>
+                  ) : (
+                    <img
+                      loading={index >= imagesInsideView ? 'lazy' : 'eager'}
+                      class="mx-auto mb-6 rounded-lg"
+                      width="720"
+                      height="540"
+                      src={project.data.thumbnail.src}
+                      alt={project.data.thumbnail.alt}
+                    />
+                  )}
+
+                  <h3 class="mb-4 text-lg font-medium">
+                    {project.data.link ? (
+                      <a href={project.data.link.url}>{project.data.titleTC}</a>
+                    ) : (
+                      project.data.titleTC
+                    )}
+
+                    <time class="opacity-60"> - {project.data.publishDate.getFullYear()}</time>
+                  </h3>
+
+                  <p class="text-lg mb-4">{project.data.description}</p>
+
+                  <div class="flex flex-wrap items-center justify-between gap-4">
+                    {project.data.tech && (
+                      <ul class="hidden lg:flex flex-wrap gap-2 xl:w-2/3 w-auto">
+                        {project.data.tech.map((tech) => (
+                          <li class="border-2 py-1 md:py-2 px-2 md:px-4 border-primary-50 rounded-full text-sm">
+                            {tech}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {project.data.link && (
+                      <ul class="flex gap-4 ">
+                        {project.data.link.sourceCodeUrl && (
+                          <li>
+                            <a class="flex gap-2" href={project.data.link.sourceCodeUrl}>
+                              <img
+                                class="object-contain"
+                                width="20"
+                                height="20"
+                                src="/assets/global/github.svg"
+                                alt="GitHub 的 Logo"
+                              />
+                              查看原始碼
+                            </a>
+                          </li>
+                        )}
+                        {project.data.link.url && (
+                          <li>
+                            <a class="flex gap-2" href={project.data.link.url}>
+                              <img
+                                width="20"
+                                height="20"
+                                src="/assets/global/open-new.svg"
+                                alt="一個指向右下角的箭頭"
+                              />
+                              前往網站
+                            </a>
+                          </li>
+                        )}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </section>
+    </main>
+  </div>
+</Base>
