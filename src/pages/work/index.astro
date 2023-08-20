@@ -63,7 +63,7 @@ const sortedProjects = projects.sort((a, b) => b.data.publishDate.getTime() - a.
 
                   <div class="flex flex-wrap items-center justify-between gap-4">
                     {project.data.tech && (
-                      <ul class="hidden lg:flex flex-wrap gap-2 xl:w-2/3 w-auto">
+                      <ul class="hidden lg:flex flex-wrap gap-2 xl:w-1/2 w-auto">
                         {project.data.tech.map((tech) => (
                           <li class="border-2 py-1 md:py-2 px-2 md:px-4 border-primary-50 rounded-full text-sm">
                             {tech}
@@ -76,7 +76,7 @@ const sortedProjects = projects.sort((a, b) => b.data.publishDate.getTime() - a.
                       <ul class="flex gap-4 ">
                         {project.data.link.sourceCodeUrl && (
                           <li>
-                            <a class="flex gap-2" href={project.data.link.sourceCodeUrl}>
+                            <a class="flex gap-2 hover:bg-primary-100 rounded-full transition-colors p-4 ml-0 lg:-ml-4 inline-block" href={project.data.link.sourceCodeUrl}>
                               <img
                                 class="object-contain"
                                 width="20"
@@ -90,7 +90,7 @@ const sortedProjects = projects.sort((a, b) => b.data.publishDate.getTime() - a.
                         )}
                         {project.data.link.url && (
                           <li>
-                            <a class="flex gap-2" href={project.data.link.url}>
+                            <a class="flex gap-2 hover:bg-primary-100 rounded-full transition-colors p-4 ml-0 lg:-ml-4 inline-block" href={project.data.link.url}>
                               <img
                                 width="20"
                                 height="20"
