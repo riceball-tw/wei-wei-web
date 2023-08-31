@@ -56,17 +56,22 @@ const skills = [
           </p>
         </div>
 
-        <h2 class="text-3xl md:text-5xl mb-8 font-medium">
-          重視從更廣闊的角度去理解專案的需求與全貌，並不拘泥於技術或職位。
-        </h2>
-
-        <p class="text-lg max-w-prose">
-          喜歡站在更宏觀的角度去思考問題的全局，目前作品中的多數網站視覺、文案與規劃都有參與。喜歡解決問題所以學習技術，而不是為了學習技術而學習。
-        </p>
+  
       </Banner>
 
       <section class="container mx-auto">
-        <h2 class="text-3xl md:text-5xl mb-8 font-medium">熟悉的技術工具</h2>
+        <div class="flex justify-between items-center  mb-8">
+          <h2 class="text-3xl md:text-5xl font-medium">技術工具</h2>
+          <a href="https://www.cakeresume.com/weiweiweb" class="border rounded-full transition-colors md:p-8 p-4 flex flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="48" viewBox="0 -960 960 960" width="48"><path d="M319-250h322v-60H319v60Zm0-170h322v-60H319v60ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554v-186H220v680h520v-494H551ZM220-820v186-186 680-680Z"/></svg>
+            <span class="md:text-2xl text-md font-medium">閱讀完整履歷</span>
+          </a>
+        </div>
+
+        <p class="text-lg max-w-prose mb-8">
+          我喜歡站在更宏觀的角度去思考問題的全局，目前作品中的多數網站視覺、文案與規劃都有參與。喜歡解決問題所以學習技術，而不是為了學習技術而學習。
+        </p>
+
         <div class="flex gap-16 flex-wrap">
           {
             skills.map((skill) => (
