@@ -1,12 +1,20 @@
 module.exports = {
   // ...
+  globals: {
+    document: true,
+    requestAnimationFrame: true,
+    localStorage: true,
+    window: true,
+  },
   extends: [
     // ...
     'airbnb-base',
     'plugin:astro/recommended',
     'plugin:astro/jsx-a11y-recommended',
+    'plugin:cypress/recommended',
     'prettier',
   ],
+  // ...
   settings: {
     'import/resolver': {
       alias: {
@@ -15,7 +23,15 @@ module.exports = {
       },
     },
   },
+  plugins: ['@typescript-eslint', 'cypress'],
+  parser: '@typescript-eslint/parser',
   overrides: [
+    {
+      files: ['*.ts'],
+      rules: {
+        'import/no-unresolved': [2, { ignore: ['astro:*'] }],
+      },
+    },
     {
       // Define the configuration for `.astro` file.
       files: ['*.astro'],
@@ -28,10 +44,11 @@ module.exports = {
         extraFileExtensions: ['.astro'],
       },
       rules: {
-        // override/add rules settings here, such as:
-        // "astro/no-set-html-directive": "error"
+        // ESLint doesn't understand Astro's special import syntax out of the box, To fix this, gnore unresolved imports from 'astro:*'
+        'import/no-unresolved': [2, { ignore: ['astro:*'] }],
+        // Ignore the import/extensions rule for `.astro` files.
+        'import/prefer-default-export': 'off',
       },
     },
-    // ...
   ],
 };
