@@ -34,6 +34,8 @@ jobs:
             ${{ runner.os }}-lfs-
       - name: Git LFS Pull
         run: git lfs pull
+      - name: Install Dependencies
+        run: pnpm install
       - name: Lint
         run: pnpm lint
       - name: Typecheck
