@@ -59,6 +59,7 @@ const socials = [
   document.querySelector('[data-mail-btn]').addEventListener('click', (e) => {
     navigator.clipboard.writeText(e.target.dataset.mailBtn);
 
+    /* eslint-disable no-param-reassign */
     function showPopover(targetElement) {
       targetElement.disabled = true;
       const popover = document.createElement('div');
@@ -76,7 +77,7 @@ const socials = [
         targetElement.disabled = false;
       }, 1000);
     }
-
+    /* eslint-enable no-param-reassign */
     showPopover(e.target);
   });
 </script>
