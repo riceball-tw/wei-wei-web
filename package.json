@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "typecheck": "astro check",
     "prettier": "prettier src/**/*.{js,astro}",
     "lint": "eslint src/**/*.{js,astro}"
   },
