@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "typecheck": "astro check",
     "prettier": "prettier src/**/*.{js,astro}",
     "lint": "eslint src/**/*.{js,astro}"
   },
@@ -20,6 +21,7 @@
     "tailwindcss-fluid-type": "^2.0.3"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.1",
     "@typescript-eslint/parser": "^5.59.8",
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -29,6 +31,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "prettier": "^2.8.8",
-    "prettier-plugin-astro": "^0.10.0"
+    "prettier-plugin-astro": "^0.10.0",
+    "typescript": "^5.5.4"
   }
 }
