@@ -14,16 +14,17 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-const globalTitle = `${title || '頁面'} - 黃宗瑋個人作品集`;
+const globalTitle = `${title || t('Head-1')} - ${t('Head-2')}`;
 const globalDescription = `${
-  description || '哈囉，我是宗瑋，一位前端技術部落格的經營者、一個線上課程助教、一個獨立接案兼通網頁設計與開發的人。'
+  description || t('Head-3')
 }`;
 const globalOgImage = '/assets/global/og-image.jpg';
-const globalOgImageAlt = '一個英文手寫字寫著 Wei 的 Logo 在一個淺白底上';
+const globalOgImageAlt = t('Head-4');
+const currentLocale = Astro.currentLocale as LanguageKey;
 ---
 
 <!DOCTYPE html>
-<html class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang="zh-Hant-TW">
+<html class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang={languageTags[currentLocale]}>
   <head>
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/global/favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/global/favicon/favicon-32x32.png" />

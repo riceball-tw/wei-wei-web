@@ -1,9 +1,12 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.astro';
-import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { localeParams, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
+export async function getStaticPaths() {
+  return localeParams;
+};
 ---
 
 <Base title={t('Navbar-1')}>

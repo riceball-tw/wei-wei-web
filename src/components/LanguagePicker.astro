@@ -1,12 +1,14 @@
 ---
-import { languages, changeLanguage, type LanguageKey } from '@/i18n/i18n.ts';
+import { languages, useTranslations, changeLanguage, type LanguageKey } from '@/i18n/i18n.ts';
+
+const t = useTranslations(Astro.currentLocale as LanguageKey);
 ---
 <button class="hover:bg-primary-100 p-4 rounded-full" popovertarget="i18n-menu" type="button">
   <!-- i18n icon -->
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m15.1 18.95l-.875 2.425q-.1.275-.35.45t-.55.175q-.5 0-.812-.413t-.113-.912l3.8-10.05q.125-.275.375-.45t.55-.175h.75q.3 0 .55.175t.375.45L22.6 20.7q.2.475-.1.888t-.8.412q-.325 0-.562-.188t-.363-.487l-.825-2.375H15.1Zm.6-1.75h3.6l-1.75-4.95h-.1L15.7 17.2ZM9 14l-4.3 4.3q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l4.35-4.35q-.95-1.05-1.663-2.175T4.75 8h2.1q.45.9.963 1.625T9.05 11.15q1.1-1.2 1.825-2.463T12.1 6H2q-.425 0-.713-.288T1 5q0-.425.288-.713T2 4h6V3q0-.425.288-.713T9 2q.425 0 .713.288T10 3v1h6q.425 0 .713.288T17 5q0 .425-.288.713T16 6h-1.9q-.525 1.775-1.425 3.45T10.45 12.6l2.4 2.45l-.75 2.05L9 14Z"/></svg>
 </button>
 <div class="bg-transparent text-center" id="i18n-menu" popover >
-  <p class="text-xl mb-8 text-white font-bold">選擇偏好語言</p>
+  <p class="text-xl mb-8 text-white font-bold">{t('LanguagePicker-1')}</p>
   <nav class="bg-white overflow-hidden shadow-lg rounded-full py-8 md:py-0">
     <ul class="flex flex-col md:flex-row gap-2 p-1">
       <!-- TypeScript: Object.keys return string[] -->
