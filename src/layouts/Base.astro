@@ -3,6 +3,9 @@ import { SEO } from 'astro-seo';
 import '@/styles/global.css';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
+import { useTranslations, type LanguageKey, languageTags, defaultLocale, prefixDefaultLocale } from '@/i18n/i18n.ts';
+
+const t = useTranslations(Astro.currentLocale as LanguageKey);
 
 interface Props {
   title?: string;
@@ -26,6 +29,15 @@ const globalOgImageAlt = '一個英文手寫字寫著 Wei 的 Logo 在一個淺�
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/global/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/global/favicon/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    {
+      Object.keys(languageTags).map(tag => {
+        if (tag !== defaultLocale && !prefixDefaultLocale) {
+          return <link rel="alternate" hreflang={tag} href={new URL(tag + Astro.url.pathname, Astro.site)} />
+        }
+        return <link rel="alternate" hreflang={tag} href={new URL(Astro.url.pathname, Astro.site)} />
+      })
+    }
+
     <SEO
       charset="UTF-8"
       title={globalTitle}

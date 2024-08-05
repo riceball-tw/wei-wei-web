@@ -8,6 +8,14 @@ export const languages = {
   'zh-tw': '繁體中文',
 } as const;
 
+// https://en.wikipedia.org/wiki/IETF_language_tag
+// IETF language tag
+export const languageTags = {
+  en: 'en',
+  'zh-cn': 'zh-Hans',
+  'zh-tw': 'zh-Hant-TW',
+} as const;
+
 export const defaultLocale = 'zh-tw';
 export const prefixDefaultLocale = false;
 
