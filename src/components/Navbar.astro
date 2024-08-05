@@ -58,7 +58,7 @@ function isActiveNavItem(navItem: string) {
               class={`md:px-8 px-4 py-4 rounded-full transition-colors whitespace-nowrap ${
                 isActiveNavItem(url) ? 'bg-primary-900 text-primary-50' : 'hover:bg-primary-100'
               }`}
-              href={getRelativeLocaleUrl(Astro.currentLocale || defaultLanguage, url)}
+              href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, url)}
             >
               {name}
             </a>
