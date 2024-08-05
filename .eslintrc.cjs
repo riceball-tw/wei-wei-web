@@ -24,6 +24,9 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   parser: '@typescript-eslint/parser',
+  rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.ts'] }],
+  },
   overrides: [
     {
       files: ['*.ts'],
