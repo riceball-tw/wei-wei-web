@@ -1,8 +1,14 @@
 ---
+import LanguagePicker from '@/components/LanguagePicker.astro'
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLocale, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+
+const t = useTranslations(Astro.currentLocale as LanguageKey);
+
 const links = [
-  { url: '/', name: '首頁' },
-  { url: '/about', name: '關於我' },
-  { url: '/work', name: '作品' },
+  { url: '/', name: t('Navbar-1') },
+  { url: '/about', name: t('Navbar-2') },
+  { url: '/work', name: t('Navbar-3') },
 ];
 
 function removeSlash(path: string) {
@@ -16,10 +22,10 @@ function isActiveNavItem(navItem: string) {
 }
 ---
 
-<nav style="height: var(--navbar-height)" class="px-4 flex justify-between items-center container mx-auto">
+<nav style="height: var(--navbar-height)" class="px-4 flex flex-col md:flex-row flex-wrap justify-center  md:justify-between items-center container mx-auto">
   <a
     class="hover:bg-primary-100 p-4 -m-4 rounded-full aspect-square flex justify-center items-center transition-colors"
-    href="/"
+    href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/')}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -43,20 +49,24 @@ function isActiveNavItem(navItem: string) {
     >
   </a>
 
-  <ul class="flex gap-2">
-    {
-      links.map(({ url, name }) => (
-        <li>
-          <a
-            class={`md:px-8 px-6 py-4 rounded-full transition-colors  ${
-              isActiveNavItem(url) ? 'bg-primary-900 text-primary-50' : 'hover:bg-primary-100'
-            }`}
-            href={url}
-          >
-            {name}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="flex gap-2 items-center">
+    <ul class="flex gap-2">
+      {
+        links.map(({ url, name }) => (
+          <li>
+            <a
+              class={`md:px-8 px-4 py-4 rounded-full transition-colors whitespace-nowrap ${
+                isActiveNavItem(url) ? 'bg-primary-900 text-primary-50' : 'hover:bg-primary-100'
+              }`}
+              href={getRelativeLocaleUrl(Astro.currentLocale || defaultLanguage, url)}
+            >
+              {name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <LanguagePicker/>
+  </div>
+
 </nav>
