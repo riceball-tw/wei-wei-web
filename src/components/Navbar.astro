@@ -11,10 +11,6 @@ const links = [
   { url: '/work', name: t('Navbar-3') },
 ];
 
-function removeSlash(path: string) {
-  return path.replace(/\//g, '');
-}
-
 function isActiveNavItem(navItem: string) {
   const { pathname } = new URL(Astro.request.url);
   const currentPath = pathname.replace(/^\/|\/$/g, '');
