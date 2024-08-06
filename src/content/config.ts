@@ -6,7 +6,6 @@ const projectCollection = defineCollection({
     draft: z.boolean(),
     isWorkInProgress: z.boolean().optional(),
     title: z.string(),
-    titleTC: z.string(),
     description: z.string(),
     link: z
       .object({

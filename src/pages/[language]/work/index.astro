@@ -70,9 +70,9 @@ export const getStaticPaths = () => localeParams;
 
                   <h3 class="mb-4 text-lg font-medium">
                     {project.data.link ? (
-                      <a href={project.data.link.url}>{project.data.titleTC}</a>
+                      <a href={project.data.link.url}>{project.data.title}</a>
                     ) : (
-                      project.data.titleTC
+                      project.data.title
                     )}
 
                     <time class="opacity-60"> - {project.data.publishDate.getFullYear()}</time>
