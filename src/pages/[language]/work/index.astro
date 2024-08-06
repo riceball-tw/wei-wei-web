@@ -5,10 +5,12 @@ import Banner from '@/components/Banner.astro';
 
 import { localeParams, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 
-const t = useTranslations(Astro.currentLocale as LanguageKey);
+const currentLocale = Astro.currentLocale as LanguageKey;
+const t = useTranslations(currentLocale);
 
 const projects = await getCollection('project', ({ data }) => !data.draft);
-const sortedProjects = projects.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+const localeRelatedProjects = projects.filter(project => project.slug.includes(currentLocale));
+const sortedProjects = localeRelatedProjects.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
 export const getStaticPaths = () => localeParams;
 ---
