@@ -12,7 +12,7 @@ const links = [
 ];
 
 function isActiveNavItem(navItem: string) {
-  const { pathname } = new URL(Astro.request.url);
+  const { pathname } = new URL(Astro.url);
   const currentPath = pathname.replace(/^\/|\/$/g, '');
   const localePrefix = prefixDefaultLocale ? Astro.currentLocale : '';
   const isHomepage = navItem === '/'
