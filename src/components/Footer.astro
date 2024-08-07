@@ -1,4 +1,6 @@
 ---
+import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+
 const socials = [
   {
     name: 'Blog',
@@ -21,20 +23,22 @@ const socials = [
     url: 'https://www.cakeresume.com/me/Riceball-wei',
   },
 ];
+
+const t = useTranslations(Astro.currentLocale as LanguageKey);
 ---
 
 <footer class="container mx-auto px-4 py-8">
   <div class="flex flex-wrap justify-between mb-8">
     <h2 class="text-3xl md:text-5xl mb-8">
-      <span class="font-bold">想要了解更多？</span>
+      <span class="font-bold">{t('Footer-1')}</span>
       <span class="text-primary-700">
         <br />
-        歡迎透過 <button class="highlight" data-mail-btn="bottle200918@gmail.com">Email</button> 或<a class="highlight" href="https://www.cakeresume.com/weiweiweb">我的履歷</a>了解更多。
+        {t('Footer-2')} <button class="highlight" data-mail-btn="bottle200918@gmail.com">Email</button> {t('Footer-3')} <a class="highlight" href="https://www.cakeresume.com/weiweiweb">{t('Footer-4')}</a> {t('Footer-5')}
       </span>
     </h2>
 
     <div>
-      <h3 class="text-lg font-medium mb-4 sr-only lg:not-sr-only">其他平台</h3>
+      <h3 class="text-lg font-medium mb-4 sr-only lg:not-sr-only">{t('Footer-6')}</h3>
       <ul>
         {
           socials.map((social) => (
