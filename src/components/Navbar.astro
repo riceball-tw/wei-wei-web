@@ -6,7 +6,7 @@ import { defaultLocale, useTranslations,prefixDefaultLocale,  type LanguageKey }
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 
 const links = [
-  { url: '/', name: t('Navbar-1') },
+  { url: '/', name: t('Navbar-1'), isHiddenOnMobile: true },
   { url: '/about', name: t('Navbar-2') },
   { url: '/work', name: t('Navbar-3') },
   { url: '/faq', name: t('Navbar-4') },
@@ -58,8 +58,8 @@ function isActiveNavItem(navItem: string) {
   <div class="flex gap-2 items-center">
     <ul class="flex gap-2">
       {
-        links.map(({ url, name }) => (
-          <li>
+        links.map(({ url, name, isHiddenOnMobile }) => (
+          <li class={isHiddenOnMobile ? 'hidden md:inline-block' : ''}>
             <a
               class={`md:px-8 px-4 py-4 rounded-full transition-colors whitespace-nowrap ${
                 isActiveNavItem(url) ? 'bg-primary-900 text-primary-50' : 'hover:bg-primary-100'
