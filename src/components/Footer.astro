@@ -56,10 +56,9 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
       </ul>
     </div>
   </div>
-  <div class="flex justify-between">
+  <div class="flex justify-between flex-wrap gap-2">
     <p class="opacity-80">All Right Reserved 2023-PRESENT © 黃宗瑋</p>
-
-    <span>🍙</span>
+    <div class="opacity-80"><time id="current-time"></time> GMT+8</div>
   </div>
 </footer>
 
@@ -89,4 +88,20 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
 
     showPopover(e.target);
   });
+
+  function updateTime() {
+      const now = new Date();
+      const options = {
+          timeZone: 'Asia/Taipei',
+          hour12: true,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+      };
+      const timeString = now.toLocaleTimeString('en', options);
+      document.getElementById('current-time').textContent = timeString;
+  }
+
+  setInterval(updateTime, 1000);
+  updateTime();
 </script>
