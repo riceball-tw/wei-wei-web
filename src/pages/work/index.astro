@@ -16,7 +16,7 @@ export const getStaticPaths = () => localeParams;
 ---
 
 <Base title={t('Navbar-3')}>
-  <div class="p-4 md:p-16">
+  <div class="p-4 md:p-8">
     <main class="min-h-screen">
       <Banner>
         <h1 class="text-3xl md:text-5xl font-medium">{t('Work-1')}<br />{t('Work-2')}</h1>
@@ -25,7 +25,7 @@ export const getStaticPaths = () => localeParams;
       <section class="container mx-auto">
         <h2 class="sr-only">{t('Work-3', {number: `${projects.length}`})}</h2>
 
-        <ul class="grid lg:grid-cols-2 grid-cols-1 gap-8">
+        <ul class="grid md:grid-cols-2 grid-cols-1 gap-8">
      
 
           {
