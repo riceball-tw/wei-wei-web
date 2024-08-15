@@ -4,6 +4,11 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
+    container: {
+      screens: {
+        '2xl': '1472px', // Col (720px) * 2 + Gap (32px)  = 1472px
+      },
+    },
     fontFamily: {
       'sans-serif': ['Noto Sans CJK TC', 'Noto Sans TC', ...defaultTheme.fontFamily.sans],
     },
