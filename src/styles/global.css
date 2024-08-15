@@ -18,6 +18,13 @@
     --accent-color: 255 168 8;
     --accent-color-hex: #ffa808;
     --navbar-height: 10rem;
+
+    --z-index-work-ribbon: calc(var(--z-index-work-thumbnail) * var(--z-index-gap));
+    --z-index-work-thumbnail: calc(var(--z-index-base) * var(--z-index-gap));
+    /* --- Above 0 z-index --- */
+    --z-index-base: 1;
+    --z-index-gap: 10;
+    /* --- Below 0 z-index --- */
   }
 
   .highlight {
