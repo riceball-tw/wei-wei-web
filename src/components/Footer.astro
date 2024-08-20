@@ -27,13 +27,13 @@ const socials = [
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 ---
 
-<footer class="container mx-auto px-4 py-8">
+<footer class="print:hidden container mx-auto px-4 py-8">
   <div class="flex flex-wrap justify-between mb-8">
     <h2 class="text-3xl md:text-5xl mb-8">
       <span class="font-bold">{t('Footer-1')}</span>
       <span class="text-primary-700">
         <br />
-        {t('Footer-2')} <button class="highlight" data-mail-btn="bottle200918@gmail.com">Email</button> {t('Footer-3')} <a class="highlight" href="https://www.cakeresume.com/weiweiweb">{t('Footer-4')}</a> {t('Footer-5')}
+        {t('Footer-2')} <button class="highlight" data-mail-btn="bottle200918@gmail.com">Email</button> {t('Footer-3')} <a class="highlight" href="/resume">{t('Footer-4')}</a> {t('Footer-5')}
       </span>
     </h2>
 

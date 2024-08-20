@@ -1,0 +1,24 @@
+---
+import Base from '@/layouts/Base.astro';
+import Banner from '@/components/Banner.astro';
+import { localeParams, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+
+
+const currentLocale = Astro.currentLocale as LanguageKey;
+const t = useTranslations(currentLocale as LanguageKey);
+export const getStaticPaths = () => localeParams;
+---
+
+<Base title={t('Resume-1')}>
+  <main class="md:min-h-screen min-h-auto">
+    <Banner>
+      <div class="text-center">
+        <h1 class="text-3xl mb-8 md:text-6xl font-semibold px-4">
+          {t('Resume-2')}
+        </h1>
+        
+        <a class="underline" href="/resume">{t('Resume-3')}</a>
+      </div>
+    </Banner>
+  </main>
+</Base>
