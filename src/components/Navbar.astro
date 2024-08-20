@@ -28,7 +28,7 @@ function isActiveNavItem(navItem: string) {
 }
 ---
 
-<nav style="height: var(--navbar-height)" class="px-4 flex flex-col md:flex-row flex-wrap justify-center  md:justify-between items-center container mx-auto">
+<nav  style="height: var(--navbar-height)" class="px-4 flex flex-col md:flex-row flex-wrap justify-center  md:justify-between items-center container mx-auto print:hidden">
   <a
     class="hover:bg-primary-100 p-4 -m-4 rounded-full aspect-square flex justify-center items-center transition-colors"
     href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/')}
@@ -74,5 +74,5 @@ function isActiveNavItem(navItem: string) {
     </ul>
     <LanguagePicker/>
   </div>
-
 </nav>
+
