@@ -1,0 +1,310 @@
+---
+import Base from '@/layouts/Base.astro';
+import { Icon } from 'astro-icon/components';
+
+const resume = {
+  personalInfo: {
+    name: '黃宗瑋',
+    role: '前端開發設計 / QA',
+    location: '台灣 台中市',
+    description: '我經營<a href="https://www.webdong.dev/" class="underline text-primary-900">網頁技術部落格累計共上百篇文章</a>。透過<a href="https://www.threads.net/@webdong.dev" class="underline text-primary-900">技術自媒體</a>發掘各式有趣的網頁相關議題，例如：<span class="text-primary-900">設計、UI、UX、前端開發、 軟體測試……</span> 等領域都有涉略。',
+    socialLinks: [
+      {
+        name: 'GitHub',
+        icon: 'simple-icons:github',
+        url: 'https://github.com/riceball-tw'
+      },
+      {
+        name: 'Email',
+        icon: 'simple-icons:gmail',
+        url: 'mailto:bottle200918@gmail.com'
+      },
+      {
+        name: 'LinkedIn',
+        icon: 'simple-icons:linkedin',
+        url: 'https://www.linkedin.com/in/weweweb/'
+      },
+ 
+   
+      {
+        name: 'Behance',
+        icon: 'simple-icons:behance',
+        url: 'https://www.behance.net/riceballwei#'
+      },
+    ]
+  },
+  workExperience: [
+    {
+      title: '前端工程師',
+      company: {
+        name: '有點意思股份有限公司（HiSKIO）',
+        link: 'https://hiskio.com/'
+      },
+      time: '2023/10 ~ 至今',
+      achievements: [
+        '推動 Cypress 搭配 Cucumber 導入 BDD E2E 開發測試，達成文件、測試與開發合一流程。',
+        '使用 Nx 建立與規劃 Monorepo 前端架構，解決專案間重工與統一性與管理問題',
+        '推動新架構使用 TypeScript 靜態型別檢查，提高整體程式安全性。',
+        '透過 GitHub Actions 建構 CI ，自動化 TypeCheck、Linter、Unit Test、E2E 檢測流程。',
+        '導入 Shadcn Vue 系列元件，縮短新架構建構時程',
+        '未公開功能開發、現有產品維運、團隊內部規範文件撰寫'
+      ],
+      techs: [
+        'Nx Monorepo',
+        'Shadcn Vue',
+        'TypeScript',
+        'Nuxt 3',
+        'Vitest',
+        'Cypress'
+      ]
+    },
+    {
+      title: '前端助教',
+      company: {
+        name: '波利馬資訊科技有限公司（六角學院）',
+        link: 'https://www.hexschool.com/'
+      },
+      time: '2022/07 ~ 2023/07 ． 1 年',
+      achievements: [
+        '審核與解決超過 800 個同學在課程中提交的作業與問題。',
+        '連 9 周替同學們撰寫每周練習教材，並跟著一同刷 Codewars JS 習題(8 ~ 5 kyu)。',
+        '撰寫超過 50 篇前端相關技術文章輔助同學們學習。',
+      ],
+      techs: [
+        'React',
+        'Vue',
+        'jQuery',
+        'Bootstrap',
+        'Sass'
+      ]
+    },
+    {
+      title: '活動網頁開發兼設計',
+      company: {
+        name: '赫綵設計學院',
+        link: 'https://www.appedu.com.tw/'
+      },
+      time: '2020 / 03 ~2020 / 05 ． 3 個月',
+      achievements: [
+        '接案獨立製作 2 個單頁活動網頁的前端設計與開發。',
+      ],
+      techs: [
+        'Sass',
+        'Bootstrap'
+      ]
+    }
+
+  ],
+  achievements: [
+    {
+      title: '2023 iThome 鐵人賽 Modern Web 組 - 鐵人鍊成',
+      subtitle: '網頁開發沒有這麼簡單過！實際案例帶你上手 Astro.js 共 30 篇系列文章',
+      url: 'https://ithelp.ithome.com.tw/users/20141551/ironman/6238'
+    }
+  ],
+  education: [
+    {
+      title: '國立臺中科技大學商業設計系',
+      time: '2019 ~ 2023',
+      description: '利用在學空閒時間積極的獨立接案累積經驗，發揮橫跨領域的優勢創建工作室網站，並且在最後一年負責畢業展視覺設計兼心理測驗網站製作。'
+    }
+  ],
+  skills: [
+    {developments: [
+      '切版：BEM CSS、Sass、Bootstrap 5、Tailwind、Shadcn Vue',
+      '前端框架：Vue 3、React Hook、Alpine、Preact、jQuery',
+      '狀態管理：Pinia',
+      '程式品質：ESLint、Prettier 與 TypeScript', 
+      '程式測試：Vitest 與 Cypress',
+      '代碼管理：Git、GitHub、Git Flow',
+      'CI：GitHub Action',
+      '搜尋引擎最佳化：具備經營部落格與線上課程販售商城工作經驗', 
+      '雜項套件：可依需求自主研究不同種類套件並建構實際應用，例如：GSAP、Framer Motion、Swiper、Tanstack Table、Zod、vee-validate……'
+      ]
+    },
+  ]
+}
+
+---
+<Base title='履歷'>
+<div style="padding-top: var(--navbar-height)" class='pb-16'>
+  <div class="container mx-auto flex justify-center">
+   <div class="a4 bg-white space-y-4 shadow-xl print:shadow-none">
+      <!-- Intro -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <!-- Personal Info -->
+        <div class="flex flex-col gap-4">
+          <!-- Personal properties -->
+          <div>
+            <h1 class="font-medium name">{resume.personalInfo.name}</h1>
+            <div class="font-medium">{resume.personalInfo.role}</div>
+            <div class="text-primary-600">{resume.personalInfo.location}</div>
+          </div>
+          <!-- Socials -->
+          <ul class="flex -ml-2">
+            {
+              resume.personalInfo.socialLinks.map(link => (
+                <li>
+                  <a class="hover:bg-primary-50 rounded p-2 inline-block" title={link.name} href={link.url}>
+                    <Icon size={16}  name={link.icon} />
+                  </a>
+                </li>  
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Quote -->
+         <div class="md:col-start-2 md:col-span-3 relative">
+           <blockquote class="text-primary-400 text-justify quote" set:html={resume.personalInfo.description}>
+          </blockquote>
+        </div>
+      </div>
+      <hr class="border-b">
+      <!-- Work Experience -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <h2 class="font-medium category-title">工作經歷</h2>
+        <div class="md:col-start-2 md:col-span-3 space-y-4">
+          {
+            resume.workExperience.map(experience => (
+                <div class="flex flex-col gap-2">
+                  <div>
+                    <div class="mb-2">
+                      <h3 class="font-medium category-item-title">{experience.title}</h3>
+                      <ul class="flex gap-4 text-primary-600">
+                        <li>
+                          <time class="work-tag">{experience.time}</time>
+                        </li>
+                        <li>
+                          <span class="work-tag">
+                            <a href={experience.company.link}>{experience.company.name}</a>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <ul class="list-disc list-inside">
+                      {
+                        experience.achievements.map(achievement => <li>{achievement}</li>)
+                      }
+                    </ul>
+                  </div>
+                  <ul class="flex flex-wrap gap-2 text-xs">
+                  {
+                    experience.techs.map(tech => <li class="border border-primary-100 bg-primary-50 text-primary-800  rounded-md inline-block p-1 px-2 whitespace-nowrap work-tag">
+                      {tech}
+                    </li>)
+                  }
+                    
+                  </ul>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+      <hr class="border-b">
+      <!-- Achievements -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <h2 class="font-medium category-title">社群活動</h2>
+        <div class="md:col-start-2 md:col-span-3 space-y-4">
+          {
+            resume.achievements.map(achievement => (
+                <div class="flex flex-col gap-2">
+                  <h3 class="font-medium category-item-title">{achievement.title}</h3>
+                  <p class="work-tag text-primary-600">
+                    <a class="hover:underline" href={achievement.url}>
+                      {achievement.subtitle}
+                    </a>
+                  </p>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+      <hr class="border-b">
+      <!-- Education -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <h2 class="font-medium category-title">學歷</h2>
+        {
+          resume.education.map(education => (
+              <div class="md:col-start-2 md:col-span-3 space-y-4">
+                <h3 class="font-medium category-item-title">{education.title}</h3>
+                <time class="work-tag text-primary-600">{education.time}</time>
+                <p>
+                  {education.description}
+                </p>
+              </div>
+            ))
+        }
+      </div>    
+      <hr class="border-b">
+      <!-- Skill -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <h2 class="font-medium category-title">技能</h2>
+        <div class="col-span-3 flex gap-4">
+        {resume.skills.map((skill) => (
+          <Fragment>
+            {skill.developments && 
+              <div class="w-full">
+                <h3 class="category-item-title font-medium">開發</h3>
+                <ul class="list-disc list-inside">
+                  {skill.developments && skill.developments.map(development => <li>{development}</li>)}
+                </ul>
+              </div>
+            }
+          </Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</Base>
+  
+<style>
+  .a4 .name {
+    font-size: 1.6rem;
+  }
+
+  .a4 .quote {
+    padding-left: 3ch;
+    font-size: 1.2rem;
+  }
+
+  .a4 .quote::before {
+    position:absolute;
+    top: 0;
+    left: 0;
+    display:inline-block;
+    content: '';
+    top:.2em;
+    width: 16px;
+    height: 16px;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 0 0 6.925 10H10a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2H3a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789M20 20h-6a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789C16.094 4.771 18.217 4 21 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 0 0 17.925 10H21a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2'/%3E%3C/svg%3E");
+  }
+
+  .a4 .category-title {
+    font-size: 1.4rem;
+  }
+
+  .a4 .category-item-title {
+    font-size: 1.4rem;
+  }
+
+  .a4 .work-tag {
+    font-size: 0.8rem;
+  }
+
+  .a4 {
+    max-width: 21cm;
+    max-height: 29.7cm;
+    padding: 1cm;
+    overflow: auto;
+  }
+
+  @media print {
+    .a4 {
+      overflow: visible;
+    }
+  }
+</style>
