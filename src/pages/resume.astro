@@ -174,7 +174,7 @@ const resume = {
                   <div>
                     <div class="mb-2">
                       <h3 class="font-medium category-item-title">{experience.title}</h3>
-                      <ul class="flex gap-4 text-primary-600">
+                      <ul class="flex flex-col md:flex-row gap-0 md:gap-4 text-primary-600">
                         <li>
                           <time class="work-tag">{experience.time}</time>
                         </li>
@@ -282,15 +282,14 @@ const resume = {
   }
 
   .a4 {
-    padding: 1rem;
+    padding: 1cm;
     max-width: 21cm;
   }
 
-  @media screen(lg) {
+  @media screen(md) {
     .a4 {
       max-height: 29.7cm;
       gap: 1cm;
-      padding: 1cm;
     }
   }
 
@@ -324,7 +323,7 @@ const resume = {
     font-size: 1.2rem;
   }
 
-  @media screen(lg) {
+  @media screen(md) {
     .a4 .category-item-title {
       font-size: 1.4rem;
     }
