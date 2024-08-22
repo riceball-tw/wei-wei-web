@@ -33,6 +33,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.1
         version: 0.9.1(prettier-plugin-astro@0.10.0)(prettier@2.8.8)(typescript@5.5.4)
+      '@iconify-json/material-symbols':
+        specifier: ^1.1.88
+        version: 1.1.88
       '@iconify-json/simple-icons':
         specifier: ^1.1.113
         version: 1.1.113
@@ -434,6 +437,9 @@ packages:
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
+
+  '@iconify-json/material-symbols@1.1.88':
+    resolution: {integrity: sha512-1wDu/SDAtJighAvGW/bO9f5zLYUvFlcErPP59uw8zURPKVpQwdLmX6zrBTeHzMUnfcPgv5dCJElCn1astExbhg==}
 
   '@iconify-json/simple-icons@1.1.113':
     resolution: {integrity: sha512-XnGdS+JExCxMN5N2r0FXA99NkYkgJUsqiU+7fUauWkImjLgail0OdNUQ2379yRY8wPSTqHxy9eCxaOAWzJ2ZWA==}
@@ -3956,6 +3962,10 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.3': {}
+
+  '@iconify-json/material-symbols@1.1.88':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify-json/simple-icons@1.1.113':
     dependencies:
