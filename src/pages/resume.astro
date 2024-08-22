@@ -128,8 +128,8 @@ const resume = {
 ---
 <Base title='履歷'>
 <div style="padding-top: var(--navbar-height)" class='pb-16'>
-  <div class="container mx-auto flex justify-center">
-   <div class="a4 bg-white space-y-4 shadow-xl print:shadow-none">
+  <div class="a4-grid flex text-black flex-col md:grid mx-auto">
+    <div class="a4 bg-white space-y-4 mx-auto">
       <!-- Intro -->
       <div class="grid md:grid-cols-4 grid-cols-1">
         <!-- Personal Info -->
@@ -163,7 +163,10 @@ const resume = {
       <hr class="border-b">
       <!-- Work Experience -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">工作經歷</h2>
+        <h2 class="font-medium category-title flex items-center md:items-start gap-2">
+          <Icon class="md:hidden block" name="material-symbols:work"/>
+          工作經歷
+        </h2>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
             resume.workExperience.map(experience => (
@@ -202,9 +205,33 @@ const resume = {
         </div>
       </div>
       <hr class="border-b">
+      <!-- Education -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <h2 class="font-medium category-title flex items-center md:items-start gap-2">
+          <Icon class="md:hidden block" name="material-symbols:book-2-rounded"/>
+          學歷
+        </h2>
+        {
+          resume.education.map(education => (
+              <div class="md:col-start-2 md:col-span-3 space-y-4">
+                <h3 class="font-medium category-item-title">{education.title}</h3>
+                <time class="work-tag text-primary-600">{education.time}</time>
+                <p>
+                  {education.description}
+                </p>
+              </div>
+            ))
+        }
+      </div>    
+    </div>
+    <div class="a4 bg-white space-y-4 mx-auto">
+      <hr class="border-b">
       <!-- Achievements -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">社群活動</h2>
+        <h2 class="font-medium category-title flex items-center md:items-start gap-2">
+          <Icon class="md:hidden block" name="material-symbols:theater-comedy-rounded"/>
+          社群活動
+        </h2>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
             resume.achievements.map(achievement => (
@@ -221,25 +248,12 @@ const resume = {
         </div>
       </div>
       <hr class="border-b">
-      <!-- Education -->
-      <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">學歷</h2>
-        {
-          resume.education.map(education => (
-              <div class="md:col-start-2 md:col-span-3 space-y-4">
-                <h3 class="font-medium category-item-title">{education.title}</h3>
-                <time class="work-tag text-primary-600">{education.time}</time>
-                <p>
-                  {education.description}
-                </p>
-              </div>
-            ))
-        }
-      </div>    
-      <hr class="border-b">
       <!-- Skill -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">技能</h2>
+        <h2 class="font-medium category-title flex items-center md:items-start gap-2">
+          <Icon class="md:hidden block" name="material-symbols:code-blocks-rounded"/>
+          技能
+        </h2>
         <div class="col-span-3 flex gap-4">
         {resume.skills.map((skill) => (
           <Fragment>
@@ -261,6 +275,25 @@ const resume = {
 </Base>
   
 <style>
+  .a4-grid {
+    justify-content: center;
+    max-width: 43cm;
+    grid-template-columns: repeat(auto-fill, minmax(21cm, 1fr));
+  }
+
+  .a4 {
+    padding: 1rem;
+    max-width: 21cm;
+  }
+
+  @media screen(lg) {
+    .a4 {
+      max-height: 29.7cm;
+      gap: 1cm;
+      padding: 1cm;
+    }
+  }
+
   .a4 .name {
     font-size: 1.6rem;
   }
@@ -288,23 +321,19 @@ const resume = {
   }
 
   .a4 .category-item-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
+
+  @media screen(lg) {
+    .a4 .category-item-title {
+      font-size: 1.4rem;
+    }
+  }
+
 
   .a4 .work-tag {
     font-size: 0.8rem;
   }
 
-  .a4 {
-    max-width: 21cm;
-    max-height: 29.7cm;
-    padding: 1cm;
-    overflow: auto;
-  }
 
-  @media print {
-    .a4 {
-      overflow: visible;
-    }
-  }
 </style>
