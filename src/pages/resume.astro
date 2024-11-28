@@ -320,9 +320,15 @@ const resume = {
 
   .a4 {
     max-width: 21cm;
-    max-height: 29.7cm;
+    max-height: auto;
     padding: 1cm;
     overflow: auto;
+  }
+
+  @media screen(md) {
+    .a4 {
+      max-height: 29.7cm;
+    }
   }
 
   @media print {
