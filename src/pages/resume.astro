@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components';
 const resume = {
   personalInfo: {
     name: '黃宗瑋',
-    role: '網頁設計/開發/測試',
+    role: '網頁開發',
     description: '我經營<a href="https://www.webdong.dev/" class="underline text-primary-900">網頁技術部落格累計共上百篇文章</a>並透過<a href="https://www.threads.net/@webdong.dev" class="underline text-primary-900">技術自媒體</a>發掘各式有趣的網頁相關議題，例如：<span class="text-primary-900">設計、UI、UX、網頁開發與測試……</span> 等領域都有涉略',
     socialLinks: [
       {
@@ -42,23 +42,23 @@ const resume = {
       time: '2023/10 ~ 2024/10 ． 1 年',
       achievements: [
         '導入 Nx 建立 Monorepo 專案架構，消除重工與套件升級管理問題',
-        '導入升級 Nuxt 3 並使用 TypeScript 型別檢查，提高整體程式安全性',
+        '導入升級 Nuxt 3 並添加 TypeScript 型別檢查，提高整體程式安全性',
         '導入 Shadcn Vue 系列元件，縮短新架構建構時程',
         '導入 GitHub Actions CI 流程，自動化套件升級、型別檢測與測試流程',
-        '使用 Cypress + Cucumber 導入 BDD E2E 文件測試合一，撰寫測試覆蓋後台專案所有主要功能',
+        '導入 BDD E2E 文件測試合一 ，撰寫測試覆蓋後台專案所有主要功能',
         '觀測並回報舊有 XSS 漏洞，提供成因與修復建議',
-        '翻新銷售平台首頁與銷售頁、未公開功能開發、產品維運、團隊內部規範文件撰寫',
+        '開發維運新銷售平台首頁、銷售頁與未公開功能、團隊內部規範文件撰寫',
       ],
       techs: [
         'Nx Monorepo',
         'TypeScript',
         'Nuxt 3',
         'Pinia',
+        'Tailwind',
+        'Shadcn Vue',
         'Cypress',
         'Cucumber',
         'Vitest',
-        'Tailwind',
-        'Shadcn Vue',
         'Git Flow'
       ]
     },
@@ -90,7 +90,7 @@ const resume = {
       },
       time: '2020 / 03 ~2020 / 05 ． 3 個月',
       achievements: [
-        '接案獨立製作 2 個單頁活動網頁前端設計兼開發。',
+        '接案獨立製作 2 個單頁活動網頁前端設計兼開發',
       ],
       techs: [
         'Sass',
@@ -110,7 +110,7 @@ const resume = {
     {
       title: '國立臺中科技大學商業設計系',
       time: '2019 ~ 2023',
-      description: '獨立接案累積經驗，發揮橫跨領域的優勢創建工作室網站，並且在最後一年負責畢業展視覺設計兼心理測驗網站製作。'
+      description: '獨立接案累積經驗，發揮橫跨領域優勢創建<a class="underline" href="https://triangledongdong.netlify.app/">工作室網站</a>，並且在最後一年負責畢業展視覺設計兼<a class="underline" href="https://cross-test.pages.dev/">心理測驗網站</a>製作'
     }
   ],
   skills: [
@@ -244,9 +244,7 @@ const resume = {
               <div class="md:col-start-2 md:col-span-3 space-y-4">
                 <h3 class="font-medium category-item-title">{education.title}</h3>
                 <time class="work-tag text-primary-600">{education.time}</time>
-                <p>
-                  {education.description}
-                </p>
+                <p set:html={education.description}></p>
               </div>
             ))
         }
