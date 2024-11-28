@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.1",
+    "@iconify-json/material-symbols": "^1.2.8",
     "@iconify-json/simple-icons": "^1.1.113",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^5.59.8",

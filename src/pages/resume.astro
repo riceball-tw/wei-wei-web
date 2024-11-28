@@ -169,7 +169,10 @@ const resume = {
       <hr class="border-b">
       <!-- Work Experience -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">工作經歷</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:home-work-outline-rounded" />
+          <h2 class="font-medium category-title">工作經歷</h2>
+        </div>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
             resume.workExperience.map(experience => (
@@ -177,7 +180,7 @@ const resume = {
                   <div>
                     <div class="mb-2">
                       <h3 class="font-medium category-item-title">{experience.title}</h3>
-                      <ul class="flex gap-4 text-primary-600">
+                      <ul class="flex flex-wrap gap-x-4 text-primary-600">
                         <li>
                           <time class="work-tag">{experience.time}</time>
                         </li>
@@ -210,7 +213,10 @@ const resume = {
       <hr class="border-b">
       <!-- Achievements -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">社群活動</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:cheer-outline-rounded" />
+          <h2 class="font-medium category-title">社群活動</h2>
+        </div>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
             resume.achievements.map(achievement => (
@@ -229,7 +235,10 @@ const resume = {
       <hr class="border-b">
       <!-- Education -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">學歷</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:school-outline-rounded" />
+          <h2 class="font-medium category-title">學歷</h2>
+        </div>
         {
           resume.education.map(education => (
               <div class="md:col-start-2 md:col-span-3 space-y-4">
@@ -245,13 +254,17 @@ const resume = {
       <hr class="border-b">
       <!-- Skill -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">技能</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:category-outline-rounded" />
+          <h2 class="font-medium category-title">技能</h2>
+        </div>
+
         <div class="col-span-3 flex gap-4">
         {resume.skills.map((skill) => (
           <Fragment>
             {skill.developments && 
               <div class="w-full">
-                <h3 class="category-item-title font-medium">開發</h3>
+                <h3 class="category-item-title sr-only">開發</h3>
                 <ul class="list-disc list-inside">
                   {skill.developments && skill.developments.map(development => <li>{development}</li>)}
                 </ul>
@@ -294,7 +307,13 @@ const resume = {
   }
 
   .a4 .category-item-title {
-    font-size: 1.4rem;
+    font-size: 1rem;
+  }
+
+  @media screen(md) {
+    .a4 .category-item-title {
+      font-size: 1.4rem;
+    }
   }
 
   .a4 .work-tag {
