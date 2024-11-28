@@ -133,7 +133,7 @@ const resume = {
 
 ---
 <Base title='履歷'>
-<div style="padding-top: var(--navbar-height)" class='pb-16'>
+<div style="padding-top: var(--navbar-height)" class='pb-16 flex flex-col gap-12'>
   <div class="container mx-auto flex justify-center">
    <div class="a4 bg-white space-y-4 shadow-xl print:shadow-none">
       <!-- Intro -->
@@ -274,6 +274,12 @@ const resume = {
       </div>
     </div>
   </div>
+  <button type="button" onclick="window.print()" class="print:hidden hidden md:flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
+    <Icon size={48} name="material-symbols:sim-card-download-outline-rounded" />
+    <span class="md:text-2xl text-xl font-medium">點擊下載履歷檔案</span>
+  </button>
+
+
 </div>
 </Base>
   
