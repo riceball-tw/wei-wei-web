@@ -5,8 +5,8 @@ import { Icon } from 'astro-icon/components';
 const resume = {
   personalInfo: {
     name: '黃宗瑋',
-    role: '網頁開發設計 / QA',
-    description: '我經營<a href="https://www.webdong.dev/" class="underline text-primary-900">網頁技術部落格累計共上百篇文章</a>。透過<a href="https://www.threads.net/@webdong.dev" class="underline text-primary-900">技術自媒體</a>發掘各式有趣的網頁相關議題，例如：<span class="text-primary-900">設計、UI、UX、網頁開發與測試……</span> 等領域都有涉略。',
+    role: '網頁開發',
+    description: '我經營<a href="https://www.webdong.dev/" class="underline text-primary-900">網頁技術部落格累計共上百篇文章</a>並透過<a href="https://www.threads.net/@webdong.dev" class="underline text-primary-900">技術自媒體</a>發掘各式有趣的網頁相關議題，例如：<span class="text-primary-900">設計、UI、UX、網頁開發與測試……</span> 等領域都有涉略',
     socialLinks: [
       {
         name: 'GitHub',
@@ -42,23 +42,23 @@ const resume = {
       time: '2023/10 ~ 2024/10 ． 1 年',
       achievements: [
         '導入 Nx 建立 Monorepo 專案架構，消除重工與套件升級管理問題',
-        '導入升級 Nuxt3 並使用 TypeScript 型別檢查，提高整體程式安全性',
+        '導入升級 Nuxt 3 並添加 TypeScript 型別檢查，提高整體程式安全性',
         '導入 Shadcn Vue 系列元件，縮短新架構建構時程',
-        '導入 GitHub Actions 建構 CI 流程，強制與自動化 TypeCheck、Linter、Unit Test、E2E 檢測流程',
-        '使用 Cypress 搭配 Cucumber 導入 BDD E2E 文件測試合一，撰寫測試覆蓋後台專案所有主要功能',
+        '導入 GitHub Actions CI 流程，自動化套件升級、型別檢測與測試流程',
+        '導入 BDD E2E 文件測試合一 ，撰寫測試覆蓋後台專案所有主要功能',
         '觀測並回報舊有 XSS 漏洞，提供成因與修復建議',
-        '翻新銷售平台首頁與銷售頁、未公開功能開發、產品維運、團隊內部規範文件撰寫',
+        '開發維運新銷售平台首頁、銷售頁與未公開功能、內部規範文件撰寫',
       ],
       techs: [
         'Nx Monorepo',
         'TypeScript',
         'Nuxt 3',
         'Pinia',
+        'Tailwind',
+        'Shadcn Vue',
         'Cypress',
         'Cucumber',
         'Vitest',
-        'Tailwind',
-        'Shadcn Vue',
         'Git Flow'
       ]
     },
@@ -90,7 +90,7 @@ const resume = {
       },
       time: '2020 / 03 ~2020 / 05 ． 3 個月',
       achievements: [
-        '接案獨立製作 2 個單頁活動網頁前端設計兼開發。',
+        '接案獨立製作 2 個單頁活動網頁前端設計兼開發',
       ],
       techs: [
         'Sass',
@@ -110,7 +110,7 @@ const resume = {
     {
       title: '國立臺中科技大學商業設計系',
       time: '2019 ~ 2023',
-      description: '獨立接案累積經驗，發揮橫跨領域的優勢創建工作室網站，並且在最後一年負責畢業展視覺設計兼心理測驗網站製作。'
+      description: '獨立接案累積經驗，發揮橫跨領域優勢創建<a class="underline" href="https://triangledongdong.netlify.app/">工作室網站</a>，並且在最後一年負責畢業展視覺設計兼<a class="underline" href="https://cross-test.pages.dev/">心理測驗網站</a>製作'
     }
   ],
   skills: [
@@ -123,7 +123,7 @@ const resume = {
       '程式品質：ESLint、Prettier 與 TypeScript', 
       '程式測試：Vitest 與 Cypress',
       '代碼管理：Git、GitHub、Git Flow、GitHub Flow',
-      'CI/CD：GitHub Action',
+      'CI/CD：GitHub Actions',
       '搜尋引擎最佳化：經營部落格與線上課程販售商城 (HiSKIO) 工作經驗', 
       '雜項套件：依需求自主研究不同種類套件並建構實際應用，例如：GSAP、Framer Motion、Swiper、Tanstack Table、Zod、vee-validate、Editor.js……'
       ]
@@ -133,7 +133,7 @@ const resume = {
 
 ---
 <Base title='履歷'>
-<div style="padding-top: var(--navbar-height)" class='pb-16'>
+<div style="padding-top: var(--navbar-height)" class='pb-16 flex flex-col gap-12'>
   <div class="container mx-auto flex justify-center">
    <div class="a4 bg-white space-y-4 shadow-xl print:shadow-none">
       <!-- Intro -->
@@ -169,7 +169,10 @@ const resume = {
       <hr class="border-b">
       <!-- Work Experience -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">工作經歷</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:home-work-outline-rounded" />
+          <h2 class="font-medium category-title">工作經歷</h2>
+        </div>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
             resume.workExperience.map(experience => (
@@ -177,7 +180,7 @@ const resume = {
                   <div>
                     <div class="mb-2">
                       <h3 class="font-medium category-item-title">{experience.title}</h3>
-                      <ul class="flex gap-4 text-primary-600">
+                      <ul class="flex flex-wrap gap-x-4 text-primary-600">
                         <li>
                           <time class="work-tag">{experience.time}</time>
                         </li>
@@ -210,7 +213,10 @@ const resume = {
       <hr class="border-b">
       <!-- Achievements -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">社群活動</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:cheer-outline-rounded" />
+          <h2 class="font-medium category-title">社群活動</h2>
+        </div>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
             resume.achievements.map(achievement => (
@@ -229,15 +235,16 @@ const resume = {
       <hr class="border-b">
       <!-- Education -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">學歷</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:school-outline-rounded" />
+          <h2 class="font-medium category-title">學歷</h2>
+        </div>
         {
           resume.education.map(education => (
               <div class="md:col-start-2 md:col-span-3 space-y-4">
                 <h3 class="font-medium category-item-title">{education.title}</h3>
                 <time class="work-tag text-primary-600">{education.time}</time>
-                <p>
-                  {education.description}
-                </p>
+                <p set:html={education.description}></p>
               </div>
             ))
         }
@@ -245,13 +252,17 @@ const resume = {
       <hr class="border-b">
       <!-- Skill -->
       <div class="grid md:grid-cols-4 grid-cols-1">
-        <h2 class="font-medium category-title">技能</h2>
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:category-outline-rounded" />
+          <h2 class="font-medium category-title">技能</h2>
+        </div>
+
         <div class="col-span-3 flex gap-4">
         {resume.skills.map((skill) => (
           <Fragment>
             {skill.developments && 
               <div class="w-full">
-                <h3 class="category-item-title font-medium">開發</h3>
+                <h3 class="category-item-title sr-only">開發</h3>
                 <ul class="list-disc list-inside">
                   {skill.developments && skill.developments.map(development => <li>{development}</li>)}
                 </ul>
@@ -263,6 +274,12 @@ const resume = {
       </div>
     </div>
   </div>
+  <button type="button" onclick="window.print()" class="print:hidden hidden md:flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
+    <Icon size={48} name="material-symbols:sim-card-download-outline-rounded" />
+    <span class="md:text-2xl text-xl font-medium">點擊下載履歷檔案</span>
+  </button>
+
+
 </div>
 </Base>
   
@@ -294,7 +311,13 @@ const resume = {
   }
 
   .a4 .category-item-title {
-    font-size: 1.4rem;
+    font-size: 1rem;
+  }
+
+  @media screen(md) {
+    .a4 .category-item-title {
+      font-size: 1.4rem;
+    }
   }
 
   .a4 .work-tag {
@@ -303,9 +326,15 @@ const resume = {
 
   .a4 {
     max-width: 21cm;
-    max-height: 29.7cm;
+    max-height: auto;
     padding: 1cm;
     overflow: auto;
+  }
+
+  @media screen(md) {
+    .a4 {
+      max-height: 29.7cm;
+    }
   }
 
   @media print {
