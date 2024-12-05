@@ -1,5 +1,6 @@
 ---
-import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { defaultLocale, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const socials = [
   {
@@ -33,7 +34,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
       <span class="font-bold">{t('Footer-1')}</span>
       <span class="text-primary-700">
         <br />
-        {t('Footer-2')} <button class="highlight" data-mail-btn="bottle200918@gmail.com">Email</button> {t('Footer-3')} <a class="highlight" href="/resume">{t('Footer-4')}</a> {t('Footer-5')}
+        {t('Footer-2')} <button class="highlight" data-mail-btn="bottle200918@gmail.com">Email</button> {t('Footer-3')} <a class="highlight" href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/resume')}>{t('Footer-4')}</a> {t('Footer-5')}
       </span>
     </h2>
 
