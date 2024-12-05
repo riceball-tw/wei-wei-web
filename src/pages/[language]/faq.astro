@@ -2,14 +2,14 @@
 import Base from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.astro';
 import { localeParams, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 
 const currentLocale = Astro.currentLocale as LanguageKey;
 const t = useTranslations(currentLocale as LanguageKey);
 
 const faqs = await getCollection('faq');
-const localeRelatedFaqs = faqs.filter(faq => faq.slug.startsWith(currentLocale));
+const localeRelatedFaqs = faqs.filter(faq => faq.id.startsWith(currentLocale));
 export const getStaticPaths = () => localeParams;
 ---
 
@@ -27,7 +27,7 @@ export const getStaticPaths = () => localeParams;
           
         {
           localeRelatedFaqs.map(async (faq) => {
-            const { Content: FaqContent } = await faq.render()
+            const { Content: FaqContent } = await render(faq)
             return (
             <details>
               <summary class="hover:bg-primary-50 px-4 -mx-4 border-t-2 border-primary-100 py-4 cursor-pointer text-xl font-medium">{faq.data.title}</summary>
