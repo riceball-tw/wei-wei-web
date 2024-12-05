@@ -1,9 +1,10 @@
 import { z, defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 // eslint-disable-next-line import/prefer-default-export
 export const collections = {
   project: defineCollection({
-    type: 'content',
+    loader: glob({ pattern: '**/[^_]*.mdx', base: './src/content/project' }),
     schema: z.object({
       draft: z.boolean(),
       isWorkInProgress: z.boolean().optional(),
@@ -26,7 +27,7 @@ export const collections = {
     }),
   }),
   faq: defineCollection({
-    type: 'content',
+    loader: glob({ pattern: '**/[^_]*.mdx', base: './src/content/faq' }),
     schema: z.object({
       title: z.string(),
     }),
