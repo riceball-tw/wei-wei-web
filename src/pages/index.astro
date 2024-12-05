@@ -1,7 +1,9 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.astro';
-import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { defaultLocale, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 ---
@@ -11,8 +13,8 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
     <Banner>
       <h1 class="text-3xl md:text-6xl font-semibold px-4">
         {t('Hero-1', { name: t('Me-1') })}<br />
-        {t('Hero-2', { number: '100' })} <a class="highlight" href="https://www.webdong.dev/post/">{t('Hero-3')}</a> {t('Hero-4')} {t('Hero-5', {number: '800'})}
-        {t('Hero-6')} <a class="highlight" href="/work">{t('Hero-7')}</a
+        {t('Hero-2', { number: '100' })} <a class="highlight" href={`https://www.webdong.dev/${Astro.currentLocale}/post/`}>{t('Hero-3')}</a> {t('Hero-4')} {t('Hero-5', {number: '800'})}
+        {t('Hero-6')} <a class="highlight" href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/work')}>{t('Hero-7')}</a
         > {t('Hero-8')}
         
       </h1>
