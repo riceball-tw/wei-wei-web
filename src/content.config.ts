@@ -32,4 +32,52 @@ export const collections = {
       title: z.string(),
     }),
   }),
+  resume: defineCollection({
+    loader: glob({ pattern: '**/[^_]*.json', base: './src/content/resume' }),
+    schema: z.object({
+      personalInfo: z.object({
+        name: z.string(),
+        role: z.string(),
+        description: z.string(),
+        socialLinks: z.array(
+          z.object({
+            name: z.string(),
+            icon: z.string(),
+            url: z.string(),
+          }),
+        ),
+      }),
+      workExperience: z.array(
+        z.object({
+          title: z.string(),
+          company: z.object({
+            name: z.string(),
+            link: z.string(),
+          }),
+          time: z.string(),
+          achievements: z.array(z.string()),
+          techs: z.array(z.string()),
+        }),
+      ),
+      achievements: z.array(
+        z.object({
+          title: z.string(),
+          subtitle: z.string(),
+          url: z.string(),
+        }),
+      ),
+      education: z.array(
+        z.object({
+          title: z.string(),
+          time: z.string(),
+          description: z.string(),
+        }),
+      ),
+      skills: z.array(
+        z.object({
+          developments: z.array(z.string()),
+        }),
+      ),
+    }),
+  }),
 };
