@@ -6,7 +6,8 @@ import { getEntry } from 'astro:content';
 
 const currentLocale = Astro.currentLocale as LanguageKey;
 const t = useTranslations(currentLocale as LanguageKey);
-const resume = (await getEntry('resume', currentLocale)).data;
+const resume = (await getEntry('resume', currentLocale))?.data;
+if (!resume) throw new Error('Resume Data is not found')
 
 export const getStaticPaths = () => localeParams;
 ---
@@ -151,7 +152,7 @@ export const getStaticPaths = () => localeParams;
       </div>
     </div>
   </div>
-  <button type="button" onclick="window.print()" class="print:hidden hidden md:flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
+  <button type="button" onclick="window.print()" class="print:hidden flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
     <Icon size={48} name="material-symbols:sim-card-download-outline-rounded" />
     <span class="md:text-2xl text-xl font-medium">{t('Resume-6')}</span>
   </button>
