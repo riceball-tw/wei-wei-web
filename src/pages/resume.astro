@@ -47,7 +47,7 @@ if (!resume) throw new Error('Resume Data is not found')
       <div class="grid md:grid-cols-4 grid-cols-1">
         <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
           <Icon class="inline-block md:hidden" size={24} name="material-symbols:home-work-outline-rounded" />
-          <h2 class="font-medium category-title">工作經歷</h2>
+          <h2 class="font-medium category-title">{t('Resume-2')}</h2>
         </div>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
@@ -91,7 +91,7 @@ if (!resume) throw new Error('Resume Data is not found')
       <div class="grid md:grid-cols-4 grid-cols-1">
         <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
           <Icon class="inline-block md:hidden" size={24} name="material-symbols:cheer-outline-rounded" />
-          <h2 class="font-medium category-title">社群活動</h2>
+          <h2 class="font-medium category-title">{t('Resume-3')}</h2>
         </div>
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
@@ -113,7 +113,7 @@ if (!resume) throw new Error('Resume Data is not found')
       <div class="grid md:grid-cols-4 grid-cols-1">
         <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
           <Icon class="inline-block md:hidden" size={24} name="material-symbols:school-outline-rounded" />
-          <h2 class="font-medium category-title">學歷</h2>
+          <h2 class="font-medium category-title">{t('Resume-4')}</h2>
         </div>
         {
           resume.education.map(education => (
@@ -130,7 +130,7 @@ if (!resume) throw new Error('Resume Data is not found')
       <div class="grid md:grid-cols-4 grid-cols-1">
         <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
           <Icon class="inline-block md:hidden" size={24} name="material-symbols:category-outline-rounded" />
-          <h2 class="font-medium category-title">技能</h2>
+          <h2 class="font-medium category-title">{t('Resume-5')}</h2>
         </div>
 
         <div class="col-span-3 flex gap-4">
@@ -138,7 +138,6 @@ if (!resume) throw new Error('Resume Data is not found')
           <Fragment>
             {skill.developments && 
               <div class="w-full">
-                <h3 class="category-item-title sr-only">開發</h3>
                 <ul class="list-disc list-inside">
                   {skill.developments && skill.developments.map(development => <li>{development}</li>)}
                 </ul>
@@ -152,7 +151,7 @@ if (!resume) throw new Error('Resume Data is not found')
   </div>
   <button type="button" onclick="window.print()" class="print:hidden flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
     <Icon size={48} name="material-symbols:sim-card-download-outline-rounded" />
-    <span class="md:text-2xl text-xl font-medium">點擊下載履歷檔案</span>
+    <span class="md:text-2xl text-xl font-medium">{t('Resume-6')}</span>
   </button>
 
 
