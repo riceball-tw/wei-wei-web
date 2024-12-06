@@ -1,24 +1,222 @@
 ---
 import Base from '@/layouts/Base.astro';
-import Banner from '@/components/Banner.astro';
+import { Icon } from 'astro-icon/components';
 import { localeParams, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
-
+import { getEntry } from 'astro:content';
 
 const currentLocale = Astro.currentLocale as LanguageKey;
 const t = useTranslations(currentLocale as LanguageKey);
+const resume = (await getEntry('resume', currentLocale)).data;
+
 export const getStaticPaths = () => localeParams;
 ---
-
 <Base title={t('Resume-1')}>
-  <main class="md:min-h-screen min-h-auto">
-    <Banner>
-      <div class="text-center">
-        <h1 class="text-3xl mb-8 md:text-6xl font-semibold px-4">
-          {t('Resume-2')}
-        </h1>
-        
-        <a class="underline" href="/resume">{t('Resume-3')}</a>
+<div style="padding-top: var(--navbar-height)" class='pb-16 flex flex-col gap-12'>
+  <div class="container mx-auto flex justify-center">
+   <div class="a4 bg-white space-y-4 shadow-xl print:shadow-none">
+      <!-- Intro -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <!-- Personal Info -->
+        <div class="flex flex-col gap-4">
+          <!-- Personal properties -->
+          <div>
+            <h1 class="font-medium name">{resume.personalInfo.name}</h1>
+            <div class="font-medium">{resume.personalInfo.role}</div>
+            <!-- <div class="text-primary-600">{resume.personalInfo.location}</div> -->
+          </div>
+          <!-- Socials -->
+          <ul class="flex -ml-2">
+            {
+              resume.personalInfo.socialLinks.map(link => (
+                <li>
+                  <a class="hover:bg-primary-50 rounded p-2 inline-block" title={link.name} href={link.url}>
+                    <Icon size={16}  name={link.icon} />
+                  </a>
+                </li>  
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Quote -->
+         <div class="md:col-start-2 md:col-span-3 relative">
+           <blockquote class="text-primary-400 text-justify quote" set:html={resume.personalInfo.description}>
+          </blockquote>
+        </div>
       </div>
-    </Banner>
-  </main>
+      <hr class="border-b">
+      <!-- Work Experience -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:home-work-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-2')}</h2>
+        </div>
+        <div class="md:col-start-2 md:col-span-3 space-y-4">
+          {
+            resume.workExperience.map(experience => (
+                <div class="flex flex-col gap-2">
+                  <div>
+                    <div class="mb-2">
+                      <h3 class="font-medium category-item-title">{experience.title}</h3>
+                      <ul class="flex flex-wrap gap-x-4 text-primary-600">
+                        <li>
+                          <time class="work-tag">{experience.time}</time>
+                        </li>
+                        <li>
+                          <span class="work-tag">
+                            <a class="hover:underline" href={experience.company.link}>{experience.company.name}</a>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <ul class="list-disc list-inside">
+                      {
+                        experience.achievements.map(achievement => <li>{achievement}</li>)
+                      }
+                    </ul>
+                  </div>
+                  <ul class="flex flex-wrap gap-2 text-xs">
+                  {
+                    experience.techs.map(tech => <li class="border border-primary-100 bg-primary-50 text-primary-800  rounded-md inline-block p-1 px-2 whitespace-nowrap work-tag">
+                      {tech}
+                    </li>)
+                  }
+                    
+                  </ul>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+      <hr class="border-b">
+      <!-- Achievements -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:cheer-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-3')}</h2>
+        </div>
+        <div class="md:col-start-2 md:col-span-3 space-y-4">
+          {
+            resume.achievements.map(achievement => (
+                <div class="flex flex-col gap-2">
+                  <h3 class="font-medium category-item-title">{achievement.title}</h3>
+                  <p class="work-tag text-primary-600">
+                    <a class="hover:underline" href={achievement.url}>
+                      {achievement.subtitle}
+                    </a>
+                  </p>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+      <hr class="border-b">
+      <!-- Education -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:school-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-4')}</h2>
+        </div>
+        {
+          resume.education.map(education => (
+              <div class="md:col-start-2 md:col-span-3 space-y-4">
+                <h3 class="font-medium category-item-title">{education.title}</h3>
+                <time class="work-tag text-primary-600">{education.time}</time>
+                <p set:html={education.description}></p>
+              </div>
+            ))
+        }
+      </div>    
+      <hr class="border-b">
+      <!-- Skill -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:category-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-5')}</h2>
+        </div>
+
+        <div class="col-span-3 flex gap-4">
+        {resume.skills.map((skill) => (
+          <Fragment>
+            {skill.developments && 
+              <div class="w-full">
+                <ul class="list-disc list-inside">
+                  {skill.developments && skill.developments.map(development => <li>{development}</li>)}
+                </ul>
+              </div>
+            }
+          </Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" onclick="window.print()" class="print:hidden hidden md:flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
+    <Icon size={48} name="material-symbols:sim-card-download-outline-rounded" />
+    <span class="md:text-2xl text-xl font-medium">{t('Resume-6')}</span>
+  </button>
+
+
+</div>
 </Base>
+  
+<style>
+  .a4 .name {
+    font-size: 1.6rem;
+  }
+
+  .a4 .quote {
+    padding-left: 3ch;
+    font-size: 1.2rem;
+  }
+
+  .a4 .quote::before {
+    position:absolute;
+    top: 0;
+    left: 0;
+    display:inline-block;
+    content: '';
+    top:.2em;
+    width: 16px;
+    height: 16px;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 0 0 6.925 10H10a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2H3a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789M20 20h-6a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789C16.094 4.771 18.217 4 21 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 0 0 17.925 10H21a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2'/%3E%3C/svg%3E");
+  }
+
+  .a4 .category-title {
+    font-size: 1.4rem;
+  }
+
+  .a4 .category-item-title {
+    font-size: 1rem;
+  }
+
+  @media screen(md) {
+    .a4 .category-item-title {
+      font-size: 1.4rem;
+    }
+  }
+
+  .a4 .work-tag {
+    font-size: 0.8rem;
+  }
+
+  .a4 {
+    max-width: 21cm;
+    max-height: auto;
+    padding: 1cm;
+    overflow: auto;
+  }
+
+  @media screen(md) {
+    .a4 {
+      max-height: 29.7cm;
+    }
+  }
+
+  @media print {
+    .a4 {
+      overflow: visible;
+    }
+  }
+</style>
