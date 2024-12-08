@@ -1,0 +1,115 @@
+{
+  "personalInfo": {
+    "name": "黃宗瑋",
+    "role": "网页开发",
+    "description": "我经营<a href=\"https://www.webdong.dev/zh-cn/\" class=\"underline text-primary-900\">网页技术部落格累计共上百篇文章</a>并透过<a href=\"https://www.threads.net/@webdong.dev\" class=\"underline text-primary-900\">技术自媒体</a>发掘各式有趣的网页相关议题，例如：<span class=\"text-primary-900\">设计、UI、UX、网页开发与测试……</span> 等领域都有涉略",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "icon": "simple-icons:github",
+        "url": "https://github.com/riceball-tw"
+      },
+      {
+        "name": "Email",
+        "icon": "simple-icons:gmail",
+        "url": "mailto:bottle200918@gmail.com"
+      },
+      {
+        "name": "LinkedIn",
+        "icon": "simple-icons:linkedin",
+        "url": "https://www.linkedin.com/in/weweweb/"
+      },
+      {
+        "name": "Behance",
+        "icon": "simple-icons:behance",
+        "url": "https://www.behance.net/riceballwei#"
+      }
+    ]
+  },
+  "workExperience": [
+    {
+      "title": "前端工程师",
+      "company": {
+        "name": "有點意思科技股份有限公司（HiSKIO）",
+        "link": "https://hiskio.com/zh-CN"
+      },
+      "time": "2023/10 ~ 2024/10 ． 1 年",
+      "achievements": [
+        "引入 Nx 建立 Monorepo 项目架构，消除重复工作与套件升级管理问题",
+        "引入升级 Nuxt 3 并添加 TypeScript 类型检查，提高整体程序安全性",
+        "引入 Shadcn Vue 系列组件，缩短新架构构建时程",
+        "引入 GitHub Actions CI 流程，自动化套件升级、类型检测与测试流程",
+        "引入 BDD E2E 文档测试合一，编写测试覆盖后台项目所有主要功能",
+        "观测并报告旧有 XSS 漏洞，提供成因与修复建议",
+        "开发维运新销售平台首页、销售页与未公开功能、内部规范文件编写"
+      ],
+      "techs": [
+        "Nx Monorepo",
+        "TypeScript",
+        "Nuxt 3",
+        "Pinia",
+        "Tailwind",
+        "Shadcn Vue",
+        "Cypress",
+        "Cucumber",
+        "Vitest",
+        "Git Flow",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "title": "前端助教",
+      "company": {
+        "name": "波利馬資訊科技有限公司（六角學院）",
+        "link": "https://www.hexschool.com/"
+      },
+      "time": "2022/07 ~ 2023/07 ． 1 年",
+      "achievements": [
+        "审核与解决超过 800 个同学在课程中提交的作业与问题",
+        "编写连续 9 周的网页开发入门教材，与同学一同刷 Codewars JS 习题",
+        "编写超过 50 篇前端相关技术文章辅助同学们学习"
+      ],
+      "techs": ["React", "Vue", "jQuery", "Bootstrap", "Sass"]
+    },
+    {
+      "title": "活动网页开发兼设计",
+      "company": {
+        "name": "赫綵設計學院",
+        "link": "https://www.appedu.com.tw/"
+      },
+      "time": "2020 / 03 ~2020 / 05 ． 3 个月",
+      "achievements": ["接案独立制作 2 个单页活动网页前端设计兼开发"],
+      "techs": ["Sass", "Bootstrap"]
+    }
+  ],
+  "achievements": [
+    {
+      "title": "2023 iThome 鐵人賽 Modern Web 組 - 鐵人煉成",
+      "subtitle": "网页开发没有这么简单过！实际案例带你上手 Astro.js 共 30 篇系列文章",
+      "url": "https://ithelp.ithome.com.tw/users/20141551/ironman/6238"
+    }
+  ],
+  "education": [
+    {
+      "title": "國立臺中科技大學商業設計系",
+      "time": "2019 ~ 2023",
+      "description": "獨立接案累積經驗，發揮橫跨領域優勢創建<a class=\"underline\" href=\"https://triangledongdong.netlify.app/\">工作室網站</a>，並且在最後一年負責畢業展視覺設計兼<a class=\"underline\" href=\"https://cross-test.pages.dev/\">心理測驗網站</a>製作"
+    }
+  ],
+  "skills": [
+    {
+      "developments": [
+        "UI：Figma、Illustrator、Photoshop",
+        "切版：BEM CSS、Sass、Bootstrap 5、Tailwind、Shadcn",
+        "前端：Vue 3、Nuxt 3、React Hook、Astro、Alpine、jQuery",
+        "状态管理：Pinia",
+        "后端：Express",
+        "程序质量：ESLint、Prettier 与 TypeScript",
+        "程序测试：Vitest 与 Cypress",
+        "代码管理：Git、GitHub、Git Flow、GitHub Flow",
+        "CI/CD：GitHub Actions",
+        "杂项套件：GSAP、Framer Motion、Swiper、Tanstack Table、Zod、vee-validate、TinyMCE、Editor.js……"
+      ]
+    }
+  ]
+}
