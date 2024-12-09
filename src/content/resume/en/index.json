@@ -116,5 +116,23 @@
         "Miscellaneous Packages: GSAP, Framer Motion, Swiper, Tanstack Table, Zod, vee-validate, TinyMCE, Editor.js..."
       ]
     }
+  ],
+  "links": [
+    {
+      "mySite": [
+        {
+          "title": "Online Resume: ",
+          "link": "https://weweweb.pages.dev/en/resume/"
+        },
+        {
+          "title": "Online Portfolio: ",
+          "link": "https://weweweb.pages.dev/en/work/"
+        },
+        {
+          "title": "Technical blog: ",
+          "link": "https://www.webdong.dev/"
+        }
+      ]
+    }
   ]
 }

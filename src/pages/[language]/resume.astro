@@ -150,8 +150,50 @@ export const getStaticPaths = () => localeParams;
           ))}
         </div>
       </div>
+
+      <hr class="border-b">
+
+      <!-- Links -->
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:link-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-7')}</h2>
+        </div>
+
+        <div class="col-span-3 flex gap-4">
+          <div>
+            <p class="inline-block mb-2">{t('Resume-8')}</p>
+  
+            {resume.links.map((section) => (
+                <ul class="list-inside list-disc">
+                  {section.mySite.map(site => 
+                  <li>
+                    {site.title}
+                    <a class="underline" href={site.link}>{site.link}</a>
+                  </li>)}
+                </ul>
+              ))}
+
+            <!-- Socials -->
+            <ul class="list-disc list-inside">
+              {
+                resume.personalInfo.socialLinks.map(link => (
+                  <li>
+                    {link.name}: 
+                    <a class="underline" title={link.name} href={link.url}>{link.url}</a>
+                  </li>  
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="border-b">
+
     </div>
   </div>
+
   <button type="button" onclick="window.print()" class="print:hidden flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
     <Icon size={48} name="material-symbols:sim-card-download-outline-rounded" />
     <span class="md:text-2xl text-xl font-medium">{t('Resume-6')}</span>
