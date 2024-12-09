@@ -116,5 +116,23 @@
         "杂项套件：GSAP、Framer Motion、Swiper、Tanstack Table、Zod、vee-validate、TinyMCE、Editor.js……"
       ]
     }
+  ],
+  "links": [
+    {
+      "mySite": [
+        {
+          "title": "线上履历：",
+          "link": "https://weweweb.pages.dev/zh-cn/resume/"
+        },
+        {
+          "title": "线上作品集：",
+          "link": "https://weweweb.pages.dev/zh-cn/work/"
+        },
+        {
+          "title": "技术部落格：",
+          "link": "https://www.webdong.dev/"
+        }
+      ]
+    }
   ]
 }

@@ -78,6 +78,16 @@ export const collections = {
           developments: z.array(z.string()),
         }),
       ),
+      links: z.array(
+        z.object({
+          mySite: z.array(
+            z.object({
+              title: z.string(),
+              link: z.string(),
+            }),
+          ),
+        }),
+      ),
     }),
   }),
 };
