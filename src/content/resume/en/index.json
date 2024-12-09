@@ -23,6 +23,11 @@
         "name": "Behance",
         "icon": "simple-icons:behance",
         "url": "https://www.behance.net/riceballwei#"
+      },
+      {
+        "name": "Threads",
+        "icon": "simple-icons:threads",
+        "url": "https://www.threads.net/@webdong.dev"
       }
     ]
   },
