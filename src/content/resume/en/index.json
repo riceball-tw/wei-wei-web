@@ -72,18 +72,18 @@
       "achievements": [
         "Reviewed and resolved over 800 student assignments and questions in the course",
         "Wrote JS introductory textbook for 9 consecutive weeks, solving Codewars JS exercises with students",
-        "Wrote over 50 frontend-related technical articles to assist students' learning"
+        "Wrote and shared over 50 articles on frontend development to enhance learning for students."
       ],
       "techs": ["React", "Vue", "jQuery", "Bootstrap", "Sass"]
     },
     {
-      "title": "Event Web Development and Design",
+      "title": "Web Design and Development Freelancer",
       "company": {
         "name": "赫綵設計學院（Appedu Design Institute）",
         "link": "https://www.appedu.com.tw/"
       },
-      "time": "2020 / 03 ~2020 / 05 . 3 months",
-      "achievements": ["Develop + design 2 single-page event website as freelancer"],
+      "time": "2020 / 03 ~ 2020 / 05 . 3 months",
+      "achievements": ["Develop and design 2 single-page event website"],
       "techs": ["Sass", "Bootstrap"]
     }
   ],
