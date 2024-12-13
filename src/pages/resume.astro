@@ -7,6 +7,9 @@ import { useTranslations, defaultLocale } from '@/i18n/i18n.ts';
 const t = useTranslations(defaultLocale);
 const resume = (await getEntry('resume', defaultLocale))?.data;
 if (!resume) throw new Error('Resume Data is not found')
+const currentTime = new Date()
+  .toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' })
+  .replace(/\//g, '-');
 ---
 <Base title={t('Resume-1')}>
 <div style="padding-top: var(--navbar-height)" class='pb-16 flex flex-col gap-12'>
@@ -188,6 +191,11 @@ if (!resume) throw new Error('Resume Data is not found')
 
       <hr class="border-b">
 
+      <div class="flex gap-2 justify-between">
+        <p>{t('Resume-9')}</p>
+        <p class="text-right whitespace-nowrap">
+          {t('Resume-10')}{currentTime}</p>
+      </div>
     </div>
   </div>
   <button type="button" onclick="window.print()" class="print:hidden flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
