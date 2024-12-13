@@ -8,6 +8,9 @@ const currentLocale = Astro.currentLocale as LanguageKey;
 const t = useTranslations(currentLocale as LanguageKey);
 const resume = (await getEntry('resume', currentLocale))?.data;
 if (!resume) throw new Error('Resume Data is not found')
+const currentTime = new Date()
+  .toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' })
+  .replace(/\//g, '-');
 
 export const getStaticPaths = () => localeParams;
 ---
@@ -191,6 +194,11 @@ export const getStaticPaths = () => localeParams;
       
       <hr class="border-b">
 
+      <div class="flex gap-2 justify-between">
+        <p>{t('Resume-9')}</p>
+        <p class="text-right whitespace-nowrap">
+          {t('Resume-10')}{currentTime}</p>
+      </div>
     </div>
   </div>
 
