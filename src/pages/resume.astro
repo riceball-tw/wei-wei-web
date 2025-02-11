@@ -3,6 +3,9 @@ import Base from '@/layouts/Base.astro';
 import { Icon } from 'astro-icon/components';
 import { getEntry } from 'astro:content';
 import { useTranslations, defaultLocale } from '@/i18n/i18n.ts';
+// Only use qrcode in dev env
+// eslint-disable-next-line import/no-extraneous-dependencies
+import QRCode from 'qrcode'
 
 const t = useTranslations(defaultLocale);
 const resume = (await getEntry('resume', defaultLocale))?.data;
@@ -177,13 +180,49 @@ const currentTime = new Date()
             <!-- Socials -->
             <ul class="list-disc list-inside">
               {
-                resume.personalInfo.socialLinks.map(link => {
+                resume.personalInfo.socialLinks.map(async (link) => {
                   const stripedEmailToUrl = link.url.replace(/^mailto:/, '')
                   return (
                   <li>
                     {link.name}: 
                     <a class="underline" title={link.name} href={link.url}>{stripedEmailToUrl}</a>
                   </li>  
+                )
+                })
+              }
+            </ul>
+
+            <!-- QRCodes -->
+            <ul class="flex gap-4 flex-wrap text-center mt-4">
+              {resume.links.map((section) => (
+                section.mySite.map(async (site) => {
+                  const qrCodeUrl = await QRCode.toDataURL(site.link, {
+                    width: 80,
+                    margin: 0,
+                    errorCorrectionLevel: 'L'
+                  })
+
+                  const stripedColonTitle = site.title.replace(/\s*[:：]\s*$/, "");
+
+                  return <li style="width: 100px;">
+                  <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${qrCodeUrl} QRCode`} />
+                  <span class="text-xs whitespace-nowrap">{stripedColonTitle}</span>
+                </li>})
+              ))}
+
+              {
+                resume.personalInfo.socialLinks.map(async (link) => {
+                  const qrCodeUrl = await QRCode.toDataURL(link.url, {
+                    width: 80,
+                    margin: 0,
+                    errorCorrectionLevel: 'L'
+                  })
+
+                  return (
+                  <li style="width: 100px;">
+                    <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${link.name} QRCode`} />
+                    <span class="text-xs whitespace-nowrap">{link.name}</span>
+                  </li>
                 )
                 })
               }
