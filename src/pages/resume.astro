@@ -177,12 +177,15 @@ const currentTime = new Date()
             <!-- Socials -->
             <ul class="list-disc list-inside">
               {
-                resume.personalInfo.socialLinks.map(link => (
+                resume.personalInfo.socialLinks.map(link => {
+                  const stripedEmailToUrl = link.url.replace(/^mailto:/, '')
+                  return (
                   <li>
                     {link.name}: 
-                    <a class="underline" title={link.name} href={link.url}>{link.url}</a>
+                    <a class="underline" title={link.name} href={link.url}>{stripedEmailToUrl}</a>
                   </li>  
-                ))
+                )
+                })
               }
             </ul>
           </div>
