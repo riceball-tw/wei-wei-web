@@ -11,9 +11,70 @@ const t = useTranslations(currentLocale);
 const projects = await getCollection('project', ({ data }) => !data.draft);
 const localeRelatedProjects = projects.filter(project => project.id.startsWith(currentLocale));
 const sortedProjects = localeRelatedProjects.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+const allProjectTechs = localeRelatedProjects.reduce<string[]>((acc, curr) => {
+  const techs = curr.data?.tech || []
+  return [...new Set([...acc, ...techs])]
+}, []).sort((a, b) => a.localeCompare(b))
 
 export const getStaticPaths = () => localeParams;
 ---
+
+<style>
+  .active {
+    @apply bg-primary-900 text-primary-50 border-transparent
+  }
+</style>
+
+<script>
+  const activedTechs: string[] = []
+  const filterElement = document.querySelector('[data-filter]')
+  const worksElement = document.querySelector('[data-works]')
+
+  function updateTechList() {
+    // Update filter buttons
+    filterElement?.querySelectorAll('button').forEach(button => {
+      if (activedTechs.includes(button.innerText)) {
+        button.classList.add('active')
+      } else {
+        button.classList.remove('active')
+      }
+    })
+
+    // Update card
+    worksElement?.querySelectorAll('[data-tech]').forEach(work => {
+      const workTechs = (work as HTMLElement).dataset.tech?.split(",") || []
+
+      if (activedTechs.length === 0) {
+        work.classList.remove('hidden')
+        return
+      }
+
+      if (activedTechs.some(tech => workTechs.includes(tech))) {
+        work.classList.remove('hidden')
+      } else {
+        work.classList.add('hidden')
+      }
+    })
+  }
+
+  filterElement?.addEventListener('click', (e: Event) => {
+    if (!e.target) return
+    const targetElement = e.target as HTMLElement
+
+    if (targetElement.tagName === 'BUTTON') {
+      const tech = targetElement.innerText
+      const techIndex = activedTechs.indexOf(tech)
+      const isIndexExist = techIndex > -1
+      if (isIndexExist) {
+        activedTechs.splice(techIndex, 1)
+      } else {
+        activedTechs.push(tech)
+      }
+
+      updateTechList()
+    }
+  })
+</script>
 
 <Base title={t('Navbar-3')}>
   <div class="p-4 md:p-8">
@@ -22,17 +83,25 @@ export const getStaticPaths = () => localeParams;
         <h1 class="text-3xl md:text-5xl font-medium">{t('Work-1')}<br />{t('Work-2')}</h1>
       </Banner>
 
-      <section class="container mx-auto">
+      <section class="container mx-auto flex flex-col gap-16">
         <h2 class="sr-only">{t('Work-3', {number: `${projects.length}`})}</h2>
 
-        <ul class="grid md:grid-cols-2 grid-cols-1 gap-8">
-     
+        <ul class="flex flex-wrap gap-2" data-filter>
+          {
+            allProjectTechs.map(tech => <li>
+            <button class="border-2 py-1 md:py-2 px-2 md:px-4 border-primary-50 rounded-full text-xs lg:text-sm" type="button">
+              { tech }
+            </button>
+          </li>)
+          }
+        </ul>
 
+        <ul data-works class="grid md:grid-cols-2 grid-cols-1 gap-8">
           {
             sortedProjects.map((project, index) => {
               const imagesInsideView = 2;
               return (
-                <li class="relative overflow-hidden">
+                <li data-tech={project.data.tech} class="relative overflow-hidden">
                   {
                     project.data.isWorkInProgress && (
                       <div class="absolute top-0 right-0 z-[--z-index-work-ribbon]">
