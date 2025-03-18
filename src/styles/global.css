@@ -1,6 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-*: initial;
+  --font-sans-serif: Noto Sans CJK TC, Noto Sans TC, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-primary-50: #f0f2f2;
+  --color-primary-100: #e1e4e6;
+  --color-primary-200: #c4c9cc;
+  --color-primary-300: #a6aeb3;
+  --color-primary-400: #899399;
+  --color-primary-500: #6b7880;
+  --color-primary-600: #566066;
+  --color-primary-700: #40484d;
+  --color-primary-800: #2b3033;
+  --color-primary-900: #15181a;
+
+  --color-accent: rgb(var(--accent-color));
+}
+
+@utility container {
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1472px) {
+    max-width: 1472px;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   :root {
@@ -32,7 +76,7 @@
   }
 
   .highlight::after {
-    @apply absolute bottom-1 left-0 block w-full md:h-2 h-0.5 opacity-60 bg-accent transition-all rounded  -z-10;
+    @apply absolute bottom-1 left-0 block w-full md:h-2 h-0.5 opacity-60 bg-accent transition-all rounded-sm  -z-10;
     content: '';
     background-image: url('/assets/global/highlight-texture.webp');
     background-size: 400px;

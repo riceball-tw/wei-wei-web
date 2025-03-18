@@ -1,9 +1,8 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import tailwindcss from '@tailwindcss/vite';
+import icon from 'astro-icon';
 import { languages, prefixDefaultLocale, defaultLocale } from './src/i18n/i18n.ts';
-
-import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,12 +11,11 @@ export default defineConfig({
     defaultLocale,
     locales: Object.keys(languages),
     routing: {
-      prefixDefaultLocale
-    }
+      prefixDefaultLocale,
+    },
   },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), mdx(), icon()]
+  integrations: [mdx(), icon()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
