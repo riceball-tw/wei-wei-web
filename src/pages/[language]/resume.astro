@@ -36,7 +36,7 @@ export const getStaticPaths = () => localeParams;
             {
               resume.personalInfo.socialLinks.map(link => (
                 <li>
-                  <a class="hover:bg-primary-50 rounded p-2 inline-block" title={link.name} href={link.url}>
+                  <a class="hover:bg-primary-50 rounded-sm p-2 inline-block" title={link.name} href={link.url}>
                     <Icon size={16}  name={link.icon} />
                   </a>
                 </li>  
