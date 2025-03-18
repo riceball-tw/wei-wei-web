@@ -1,5 +1,19 @@
-# Wei Wei Web
-![Wei on lightgray background](public/assets/global/og-image.jpg)
+# [Wei Wei Web](https://weweweb.pages.dev/en) - Personal website
+
+[Resume](https://weweweb.pages.dev/en/resume/) /
+[Toolbox](https://weweweb.pages.dev/en/work/) /
+[ShortPosts](https://weweweb.pages.dev/en/faq/)
+
+> My personal frontend resume / portfolio / Q&A
+
+
+
+## Motivation
+
+Since I am a frontend developer, why not create a portfolio website myself?
+
+- [Let's Build a Personal Frontend Portfolio - Preparation](https://www.webdong.dev/en/post/lets-build-a-portfolio/)
+
 
 ## Getting Started
 
@@ -23,9 +37,14 @@ pnpm run dev
 # Deploy the contents of the `./dist` folder wherever you like.
 pnpm install
 pnpm build
-pnpm preview 
+pnpm preview
 
 # b. Build docker image
 docker build -t <your-astro-image-name> .
 docker run -p <local-port>:<container-port> <your-astro-image-name>
 ```
+
+## License
+
+The source code in this repository is licensed under the MIT License.
+Non-code content (e.g., images, articles, documentation) is copyrighted and all rights are reserved.
