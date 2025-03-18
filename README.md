@@ -13,7 +13,7 @@ git clone https://github.com/riceball-tw/wei-wei-web.git .
 pnpm install
 
 # 3. Run the development server
-npm run dev
+pnpm run dev
 ```
 
 ### Build
