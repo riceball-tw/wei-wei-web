@@ -1,8 +1,8 @@
 # [Wei Wei Web](https://weweweb.pages.dev/en) - Personal website
 
 [Resume](https://weweweb.pages.dev/en/resume/) /
-[Toolbox](https://weweweb.pages.dev/en/work/) /
-[ShortPosts](https://weweweb.pages.dev/en/faq/)
+[Portfolio](https://weweweb.pages.dev/en/work/) /
+[Q&A](https://weweweb.pages.dev/en/faq/)
 
 > My personal frontend resume / portfolio / Q&A
 
