@@ -1,9 +1,23 @@
 @import 'tailwindcss';
-
+@config "../../tailwind.config.ts";
 @theme {
   --font-*: initial;
   --font-sans-serif: Noto Sans CJK TC, Noto Sans TC, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --text-xs--line-height: calc(1 / 0.75);
+  --text-sm--line-height: calc(1.25 / 0.875);
+  --text-base--line-height: calc(1.5 / 1);
+  --text-lg--line-height: calc(1.75 / 1.125);
+  --text-xl--line-height: calc(1.75 / 1.25);
+  --text-2xl--line-height: calc(2 / 1.5);
+  --text-3xl--line-height: calc(2.25 / 1.875);
+  --text-4xl--line-height: calc(2.5 / 2.25);
+  --text-5xl--line-height: calc(3 / 2.25);
+  --text-6xl--line-height: calc(3 / 2.25);
+  --text-7xl--line-height: calc(3 / 2.25);
+  --text-8xl--line-height: calc(3 / 2.25);
+  --text-9xl--line-height: calc(3 / 2.25);
 
   --color-primary-50: #f0f2f2;
   --color-primary-100: #e1e4e6;

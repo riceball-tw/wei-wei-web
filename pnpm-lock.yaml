@@ -30,8 +30,8 @@ importers:
         specifier: ^4.0.14
         version: 4.0.14
       tailwindcss-fluid-type:
-        specifier: ^2.0.6
-        version: 2.0.6(tailwindcss@4.0.14)
+        specifier: 3.0.0--.beta.2
+        version: 3.0.0--.beta.2(tailwindcss@4.0.14)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.4
@@ -3456,10 +3456,10 @@ packages:
     resolution: {integrity: sha512-7gr8p9TQP6RAHusBOSLs46F4564ZrjV8xFmw5zCmgmhGUcw2hxsShhJ6CEiHQMgPDwAQ1fWHPM0ypc4RMAig4A==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  tailwindcss-fluid-type@2.0.6:
-    resolution: {integrity: sha512-52cOi3zDHWNChRbwlZ9r7UnY/1LGBFQA0enaFfy8zGrXuXuWSxZZFssrMBh717C9HjdBay7Qn3amH89VirsIsw==}
+  tailwindcss-fluid-type@3.0.0--.beta.2:
+    resolution: {integrity: sha512-mF7SmMx3FBIw4yX6lDySjb9qVvyYrDkQ9TIAxAnPswImd/AtopdvaenHwVcOaDXHcSWqRFy+zIERDSLdvUX+cA==}
     peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+      tailwindcss: '>=4.0.0 || >=4.0.0-beta.3'
 
   tailwindcss@4.0.14:
     resolution: {integrity: sha512-92YT2dpt671tFiHH/e1ok9D987N9fHD5VWoly1CdPD/Cd1HMglvZwP3nx2yTj2lbXDAHt8QssZkxTLCCTNL+xw==}
@@ -8176,7 +8176,7 @@ snapshots:
       '@pkgr/core': 0.1.1
       tslib: 2.6.3
 
-  tailwindcss-fluid-type@2.0.6(tailwindcss@4.0.14):
+  tailwindcss-fluid-type@3.0.0--.beta.2(tailwindcss@4.0.14):
     dependencies:
       tailwindcss: 4.0.14
 
