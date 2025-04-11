@@ -15,11 +15,12 @@
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
     "@astrojs/tailwind": "^6.0.0",
+    "@tailwindcss/vite": "^4.0.14",
     "astro": "^5.5.2",
     "astro-icon": "^1.1.1",
     "astro-seo": "^0.7.2",
-    "tailwindcss": "^3.0.24",
-    "tailwindcss-fluid-type": "^2.0.3"
+    "tailwindcss": "^4.0.14",
+    "tailwindcss-fluid-type": "3.0.0--.beta.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

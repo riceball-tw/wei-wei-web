@@ -36,7 +36,7 @@ export const getStaticPaths = () => localeParams;
             {
               resume.personalInfo.socialLinks.map(link => (
                 <li>
-                  <a class="hover:bg-primary-50 rounded p-2 inline-block" title={link.name} href={link.url}>
+                  <a class="hover:bg-primary-50 rounded-sm p-2 inline-block" title={link.name} href={link.url}>
                     <Icon size={16}  name={link.icon} />
                   </a>
                 </li>  
@@ -245,7 +245,7 @@ export const getStaticPaths = () => localeParams;
     </div>
   </div>
 
-  <button type="button" onclick="window.print()" class="print:hidden flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
+  <button type="button" onclick="window.print()" class="cursor-pointer print:hidden flex border rounded-full transition-colors md:p-8 p-4 flex-wrap justify-center items-center gap-4 hover:bg-primary-800 hover:text-white mx-auto">
     <Icon size={48} name="material-symbols:sim-card-download-outline-rounded" />
     <span class="md:text-2xl text-xl font-medium">{t('Resume-6')}</span>
   </button>
@@ -285,7 +285,7 @@ export const getStaticPaths = () => localeParams;
     font-size: 1rem;
   }
 
-  @media screen(md) {
+  @media (width >= 48rem) {
     .a4 .category-item-title {
       font-size: 1.4rem;
     }
@@ -302,7 +302,7 @@ export const getStaticPaths = () => localeParams;
     overflow: auto;
   }
 
-  @media screen(md) {
+  @media (width >= 48rem) {
     .a4 {
       max-height: 29.7cm;
     }
