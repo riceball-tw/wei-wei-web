@@ -1,5 +1,7 @@
 // tailwind.config.ts
 import type { Config } from 'tailwindcss';
+// @ts-expect-error
+// tailwindcss-fluid-type has no type, so ignore ts-error
 import fluidType from 'tailwindcss-fluid-type';
 
 export default {
