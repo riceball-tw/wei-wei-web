@@ -1,7 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import { Icon } from 'astro-icon/components';
-import { localeParams, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { languages, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import { getEntry } from 'astro:content';
 // Only use qrcode in dev env
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -15,7 +15,11 @@ const currentTime = new Date()
   .toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' })
   .replace(/\//g, '-');
 
-export const getStaticPaths = () => localeParams;
+export function getStaticPaths() {
+  return Object.keys(languages).map((language) => ({
+    params: { language },
+  }));
+}
 ---
 <Base title={t('Resume-1')}>
 <div style="padding-top: var(--navbar-height)" class='pb-16 flex flex-col gap-12'>

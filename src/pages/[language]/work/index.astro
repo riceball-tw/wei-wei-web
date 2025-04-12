@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.astro';
 
-import { localeParams, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { languages, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 
 const currentLocale = Astro.currentLocale as LanguageKey;
 const t = useTranslations(currentLocale);
@@ -16,7 +16,11 @@ const allProjectTechs = localeRelatedProjects.reduce<string[]>((acc, curr) => {
   return [...new Set([...acc, ...techs])]
 }, []).sort((a, b) => a.localeCompare(b))
 
-export const getStaticPaths = () => localeParams;
+export function getStaticPaths() {
+  return Object.keys(languages).map((language) => ({
+    params: { language },
+  }));
+}
 ---
 
 <style>
