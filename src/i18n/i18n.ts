@@ -23,15 +23,6 @@ export type LanguageKey = keyof typeof languages;
 export type LanguageValue = (typeof languages)[LanguageKey];
 
 /**
- * Get locale parms for Astro's `getStaticPaths` function
- * @returns - The list of locale params
- * @see https://docs.astro.build/en/guides/routing/#dynamic-routes
- */
-export const localeParams = Object.keys(languages).map((language) => ({
-  params: { language },
-}));
-
-/**
  * Get the translation file based on the target language
  * If the target language is not found, it will fallback to English
  */
