@@ -1,11 +1,9 @@
 ---
 import Base from '@/layouts/Base.astro';
 
-import { useTranslations, localeParams, type LanguageKey } from '@/i18n/i18n.ts';
+import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
-
-export const getStaticPaths = () => localeParams;
 ---
 
 <Base title={t('404-1')}>
