@@ -106,14 +106,13 @@
       "developments": [
         "UI: Figma, Illustrator, Photoshop",
         "CSS: BEM CSS, Sass, Bootstrap 5, Tailwind, Shadcn",
-        "Frontend: Vue 3, Nuxt 3, React Hook, Astro, Alpine, jQuery",
-        "State Management: Pinia",
+        "Frontend:Nuxt 3 (Vue), Next 15 (React), Astro, jQuery",
+        "State Management: Pinia, Zustand",
         "Backend: Express",
         "Code Quality: ESLint, Prettier and TypeScript",
         "Code Testing: Vitest and Cypress",
         "Code Management: Git, GitHub, Git Flow, GitHub Flow",
-        "CI/CD: GitHub Actions",
-        "Miscellaneous Packages: GSAP, Framer Motion, Swiper, Tanstack Table, Zod, vee-validate, TinyMCE, Editor.js..."
+        "Devops：GitHub Actions、Docker"
       ]
     }
   ],

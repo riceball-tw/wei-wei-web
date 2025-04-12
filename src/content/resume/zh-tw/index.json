@@ -106,14 +106,13 @@
       "developments": [
         "UI：Figma、Illustrator、Photoshop",
         "切版：BEM CSS、Sass、Bootstrap 5、Tailwind、Shadcn",
-        "前端：Vue 3、Nuxt 3、React Hook、Astro、Alpine、jQuery",
-        "狀態管理：Pinia",
+        "前端：Nuxt 3（Vue）、Next 15（React）、Astro、jQuery",
+        "狀態管理：Pinia、Zustand",
         "後端：Express",
         "程式品質：ESLint、Prettier 與 TypeScript",
         "程式測試：Vitest 與 Cypress",
         "代碼管理：Git、GitHub、Git Flow、GitHub Flow",
-        "CI/CD：GitHub Actions",
-        "雜項套件：GSAP、Framer Motion、Swiper、Tanstack Table、Zod、vee-validate、TinyMCE、Editor.js……"
+        "Devops：GitHub Actions、Docker"
       ]
     }
   ],
