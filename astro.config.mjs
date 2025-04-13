@@ -12,7 +12,7 @@ export default defineConfig({
     locales: Object.keys(languages),
     routing: {
       prefixDefaultLocale,
-      redirectToDefaultLocale: true,
+      redirectToDefaultLocale: false,
     },
   },
   integrations: [mdx(), icon()],
