@@ -112,7 +112,7 @@
         "Code Quality: ESLint, Prettier and TypeScript",
         "Code Testing: Vitest and Cypress",
         "Code Management: Git, GitHub, Git Flow, GitHub Flow",
-        "Devops：GitHub Actions、Docker"
+        "DevOps：GitHub Actions、Docker"
       ]
     }
   ],
@@ -129,7 +129,7 @@
         },
         {
           "title": "Technical blog: ",
-          "link": "https://www.webdong.dev/"
+          "link": "https://www.webdong.dev/en/"
         }
       ]
     }

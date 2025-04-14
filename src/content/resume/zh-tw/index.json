@@ -112,7 +112,7 @@
         "程式品質：ESLint、Prettier 與 TypeScript",
         "程式測試：Vitest 與 Cypress",
         "代碼管理：Git、GitHub、Git Flow、GitHub Flow",
-        "Devops：GitHub Actions、Docker"
+        "DevOps：GitHub Actions、Docker"
       ]
     }
   ],
@@ -121,11 +121,11 @@
       "mySite": [
         {
           "title": "線上履歷：",
-          "link": "https://weweweb.pages.dev/resume/"
+          "link": "https://weweweb.pages.dev/zh-tw/resume/"
         },
         {
           "title": "線上作品集：",
-          "link": "https://weweweb.pages.dev/work/"
+          "link": "https://weweweb.pages.dev/zh-tw/work/"
         },
         {
           "title": "技術部落格：",
