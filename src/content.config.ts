@@ -1,5 +1,6 @@
 import { z, defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { allowedTechsEnum } from '@/types/collections.ts';
 
 // eslint-disable-next-line import/prefer-default-export
 export const collections = {
@@ -21,7 +22,7 @@ export const collections = {
         alt: z.string(),
       }),
       video: z.array(z.object({ src: z.string(), type: z.string() })).optional(),
-      tech: z.array(z.string()).optional(),
+      tech: z.array(allowedTechsEnum),
       themeColor: z.string().min(4).max(9).regex(/^#/).default('#fff'),
       publishDate: z.date(),
     }),

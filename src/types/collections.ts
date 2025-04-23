@@ -1,0 +1,45 @@
+import { z } from 'astro:content';
+
+const allowedTechs = [
+  'Astro.js',
+  'Axios',
+  'Bootstrap',
+  'changesets + tsup',
+  'Chart.js',
+  'ChatGPT AI',
+  'Cloudflare Pages',
+  'Cypress',
+  'Daisy UI',
+  'Drizzle ORM',
+  'Framer Motion',
+  'Gemini AI',
+  'GSAP',
+  'Gulp',
+  'Hugo',
+  'i18n',
+  'jQuery',
+  'Lighthouse CI',
+  'MySQL',
+  'Netlify CMS',
+  'Next(React)',
+  'Nuxt(Vue)',
+  'Pinia',
+  'Playwright',
+  'React',
+  'React Router',
+  'Sass',
+  'Shadcn UI',
+  'Supabase(Postgres)',
+  'Tailwind',
+  'TypeScript',
+  'Vercel',
+  'Vite',
+  'Vitest',
+  'Vue',
+  'Vue Router',
+  'Zod',
+] as const;
+
+// eslint-disable-next-line import/prefer-default-export
+export const allowedTechsEnum = z.enum(allowedTechs);
+export type AllowedTechsEnum = z.infer<typeof allowedTechsEnum>;
