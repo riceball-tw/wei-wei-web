@@ -90,7 +90,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run Lighthouse CI
-        run: pnpm lighthouse
+        run: pnpm dlx @lhci/cli@0.14.x autorun
 
   deploy:
     needs: [build]
