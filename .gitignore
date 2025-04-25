@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # Skip Symbolic link file
 src/content
+
+# Lighthouse
+.lighthouseci
