@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.5",
-    "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/vite": "^4.0.14",
     "astro": "^5.7.5",
     "astro-icon": "^1.1.1",
