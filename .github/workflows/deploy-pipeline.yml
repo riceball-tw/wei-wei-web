@@ -71,6 +71,27 @@ jobs:
           name: dist
           path: dist
 
+  lighthouse:
+    needs: [build]
+    runs-on: ubuntu-latest
+    env:
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Environment Setup
+        uses: ./.github/actions/setup
+
+      - name: Run Lighthouse CI
+        run: pnpm lighthouse
+
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
