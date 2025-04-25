@@ -3,13 +3,40 @@ name: Deploy Pipeline
 on: [push]
 
 jobs:
+  # ESLint + Prettier
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Environment Setup
+        uses: ./.github/actions/setup
+
+      - name: Run Lint
+        run: pnpm lint
+
+  # TypeScript Check
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Environment Setup
+        uses: ./.github/actions/setup
+
+      - name: Run Typecheck
+        run: pnpm typecheck
+
   deploy:
+    needs: [lint, typecheck]
     runs-on: ubuntu-latest
     permissions:
       contents: read
       deployments: write
 
-    name: Deploy to Cloudflare Pages
+    name: Deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,38 +52,8 @@ jobs:
           token: ${{ secrets.CHECKOUT_GITHUB_CONTENT_PAT }}
           lfs: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-          run_install: false
-
-      - name: Create LFS file list
-        run: git lfs ls-files --long | cut -d ' ' -f1 | sort > .lfs-assets-id
-      - name: LFS Cache
-        uses: actions/cache@v3
-        with:
-          path: .git/lfs/objects
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-          restore-keys: |
-            ${{ runner.os }}-lfs-
-
-      - name: Git LFS Pull
-        run: git lfs pull
-
-      - name: Install Dependencies
-        run: pnpm install
-
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Lint
-        run: pnpm lint
+      - name: Environment Setup
+        uses: ./.github/actions/setup
 
       - name: Build
         run: pnpm build
