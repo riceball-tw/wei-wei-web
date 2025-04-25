@@ -2,6 +2,8 @@
   "ci": {
     "collect": {
       "numberOfRuns": 1,
+      "startServerCommand": "astro preview",
+      "url": ["http://localhost:4321/en/"],
       "settings": {
         "preset": "desktop"
       }

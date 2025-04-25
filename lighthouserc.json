@@ -1,7 +1,9 @@
 {
   "ci": {
     "collect": {
-      "numberOfRuns": 1
+      "numberOfRuns": 1,
+      "startServerCommand": "astro preview",
+      "url": ["http://localhost:4321/en/"]
     },
     "upload": {
       "target": "temporary-public-storage"
