@@ -7,8 +7,7 @@
         "http://localhost:4321/en/",
         "http://localhost:4321/en/resume/",
         "http://localhost:4321/en/work/",
-        "http://localhost:4321/en/faq/",
-        "http://localhost:4321/en/404/"
+        "http://localhost:4321/en/faq/"
       ]
     },
     "upload": {
