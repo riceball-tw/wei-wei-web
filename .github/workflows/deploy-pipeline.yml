@@ -3,6 +3,32 @@ name: Deploy Pipeline
 on: [push]
 
 jobs:
+  # ESLint + Prettier
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Environment Setup
+        uses: ./.github/actions/setup
+
+      - name: Run Lint
+        run: pnpm lint
+
+  # TypeScript Check
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Environment Setup
+        uses: ./.github/actions/setup
+
+      - name: Run Typecheck
+        run: pnpm typecheck
+
   deploy:
     runs-on: ubuntu-latest
     permissions:
@@ -51,12 +77,6 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install
-
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Lint
-        run: pnpm lint
 
       - name: Build
         run: pnpm build
