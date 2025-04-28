@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export const config = {
+module.exports = {
   ci: {
     collect: {
       numberOfRuns: 1,
