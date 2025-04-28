@@ -90,6 +90,8 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run Lighthouse CI
+        env:
+          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
         run: pnpm dlx @lhci/cli@0.14.x autorun
 
   deploy:
