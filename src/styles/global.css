@@ -62,6 +62,7 @@
 
 @layer base {
   :root {
+    interpolate-size: allow-keywords;
     --primary-color-50: 248 250 251;
     --primary-color-100: 235 239 251;
     --primary-color-200: 214 214 247;

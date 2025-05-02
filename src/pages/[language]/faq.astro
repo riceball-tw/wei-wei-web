@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.astro';
+import Accorditions from '@/components/Accorditions.astro'
 import { languages, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import { getCollection, render } from 'astro:content';
 
@@ -34,12 +35,9 @@ export function getStaticPaths() {
           localeRelatedFaqs.map(async (faq) => {
             const { Content: FaqContent } = await render(faq)
             return (
-            <details>
-              <summary class="hover:bg-primary-50 px-4 -mx-4 border-t-2 border-primary-100 py-4 cursor-pointer text-xl font-medium">{faq.data.title}</summary>
-              <div style="max-width: 70ch" class="mb-4 text-lg">
-                <FaqContent/>
-              </div>
-            </details>
+            <Accorditions title={faq.data.title}>
+              <FaqContent/>
+            </Accorditions>
           )
           })
         }
