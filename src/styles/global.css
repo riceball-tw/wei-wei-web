@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @config "../../tailwind.config.ts";
-@theme {
+@theme inline {
   --font-*: initial;
   --font-sans-serif: Noto Sans CJK TC, Noto Sans TC, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';

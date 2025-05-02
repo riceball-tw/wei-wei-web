@@ -27,7 +27,7 @@ export function getStaticPaths() {
 }
 ---
 
-<style>
+<style is:inline>
   .active {
     background-color: var(--color-primary-900);
     color: var(--color-primary-50);
@@ -152,10 +152,10 @@ export function getStaticPaths() {
                       </div>
 
                   <h3 class="mb-4 text-lg font-medium">
-                    {project.data.link ? (
+                    {project.data?.link?.url ? (
                       <a href={project.data.link.url}>{project.data.title}</a>
                     ) : (
-                      project.data.title
+                      <span>{ project.data.title }</span>
                     )}
 
                     <time class="opacity-60"> - {project.data.publishDate.getFullYear()}</time>
