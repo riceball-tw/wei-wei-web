@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<details>
+  <summary class="hover:bg-primary-50 px-4 -mx-4 border-t-2 border-primary-100 py-4 cursor-pointer text-xl font-medium">{ title }</summary>
+  <div style="max-width: 70ch" class="pb-4 text-lg">
+    <slot />
+  </div>
+</details>
+
+<style is:inline>
+details {
+  overflow: hidden;
+}
+
+details::details-content {
+  height: 0;
+  transition: height 0.3s, content-visibility 0.3s;
+  transition-behavior: allow-discrete;
+}
+
+details[open]::details-content {
+  height: auto;
+}
+</style>
