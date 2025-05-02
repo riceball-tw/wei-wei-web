@@ -26,6 +26,41 @@ const currentLocale = Astro.currentLocale as LanguageKey;
 <!DOCTYPE html>
 <html class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang={languageTags[currentLocale]}>
   <head>
+    <SEO
+    charset="UTF-8"
+    title={globalTitle}
+    description={globalDescription}
+    openGraph={{
+      basic: {
+        title: `${globalTitle}`,
+        type: 'website',
+        image: `${globalOgImage}`,
+      },
+      image: {
+        type: 'image/jpeg',
+        alt: `${globalOgImageAlt}`,
+        height: 630,
+        width: 1200,
+      },
+    }}
+    twitter={{
+      title: `${globalTitle}`,
+      description: `${globalDescription}`,
+      image: `${globalOgImage}`,
+      imageAlt: `${globalOgImageAlt}`,
+    }}
+    extend={{
+      link: [
+        { rel: 'manifest', href: '/manifest.webmanifest' },
+      ],
+      meta: [
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1',
+        },
+      ],
+    }}
+  />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/global/favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/global/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/global/favicon/favicon-16x16.png" />
@@ -38,41 +73,7 @@ const currentLocale = Astro.currentLocale as LanguageKey;
       })
     }
 
-    <SEO
-      charset="UTF-8"
-      title={globalTitle}
-      description={globalDescription}
-      openGraph={{
-        basic: {
-          title: `${globalTitle}`,
-          type: 'website',
-          image: `${globalOgImage}`,
-        },
-        image: {
-          type: 'image/jpeg',
-          alt: `${globalOgImageAlt}`,
-          height: 630,
-          width: 1200,
-        },
-      }}
-      twitter={{
-        title: `${globalTitle}`,
-        description: `${globalDescription}`,
-        image: `${globalOgImage}`,
-        imageAlt: `${globalOgImageAlt}`,
-      }}
-      extend={{
-        link: [
-          { rel: 'manifest', href: '/manifest.webmanifest' },
-        ],
-        meta: [
-          {
-            name: 'viewport',
-            content: 'width=device-width, initial-scale=1',
-          },
-        ],
-      }}
-    />
+
   </head>
   <body
     class="print:bg-[url('')] bg-[url('/assets/global/natural-paper.webp')] bg-fixed"
