@@ -132,23 +132,22 @@ export function getStaticPaths() {
                       loop
                       muted
                       playsinline
-                      poster={project.data.thumbnail.src}
+                      poster={project.data?.thumbnail?.src || ''}
                     >
                       {project.data.video.map((source) => (
                         <source src={source.src} type={source.type} />
                       ))}
                     </video>
-                  ) : (
-              
-                      <img
+                  ) : 
+                        project.data?.thumbnail?.src ? <img
                         loading={index >= imagesInsideView ? 'lazy' : 'eager'}
                         class="w-full rounded-lg z-(--z-index-work-thumbnail) relative"
                         width="720"
                         height="540"
                         src={project.data.thumbnail.src}
                         alt={project.data.thumbnail.alt}
-                        />
-                      )}
+                        /> : <div style="aspect-ratio: 4 / 3;" class="w-full text-center bg-primary-100 text-primary-600 flex justify-center items-center z-(--z-index-work-thumbnail) relative text-4xl font-bold">{project.data.title}</div>
+                      }
                       </div>
 
                   <h3 class="text-lg font-medium">
