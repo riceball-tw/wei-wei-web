@@ -141,7 +141,7 @@ export function getStaticPaths() {
                             ))}
                           </video>
                         );
-                      } else if (project.data?.thumbnail?.src) {
+                      } if (project.data?.thumbnail?.src) {
                         return (
                           <img
                             loading={index >= imagesInsideView ? 'lazy' : 'eager'}
@@ -152,7 +152,7 @@ export function getStaticPaths() {
                             alt={project.data.thumbnail.alt}
                           />
                         );
-                      } else {
+                      } 
                         return (
                           <div 
                             style="aspect-ratio: 4 / 3;" 
@@ -161,7 +161,7 @@ export function getStaticPaths() {
                             {project.data.title}
                           </div>
                         );
-                      }
+                      
                     })()}
                   </div>
 
