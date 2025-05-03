@@ -7,6 +7,9 @@ import { languages, prefixDefaultLocale, defaultLocale } from './src/i18n/i18n.t
 // https://astro.build/config
 export default defineConfig({
   site: 'https://weweweb.pages.dev',
+  build: {
+    inlineStylesheets: 'always',
+  },
   i18n: {
     defaultLocale,
     locales: Object.keys(languages),
