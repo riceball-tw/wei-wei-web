@@ -122,33 +122,48 @@ export function getStaticPaths() {
                     )
                   }  
                   <div style="--thumbnailWidth: 720px; --thumbnailHeight: 540px;" class="relative max-w-(--thumbnailWidth) max-h-(--thumbnailHeight) before:animate-pulse before:bg-primary-100 before:border-transparent before:inset-0 before:absolute before:rounded-lg">
-                  {project.data.video ? (
-                    <video
-                      style="aspect-ratio: 4 / 3;"
-                      class="rounded-lg z-(--z-index-work-thumbnail) relative"
-                      width="720"
-                      height="540"
-                      autoplay
-                      loop
-                      muted
-                      playsinline
-                      poster={project.data?.thumbnail?.src || ''}
-                    >
-                      {project.data.video.map((source) => (
-                        <source src={source.src} type={source.type} />
-                      ))}
-                    </video>
-                  ) : 
-                        project.data?.thumbnail?.src ? <img
-                        loading={index >= imagesInsideView ? 'lazy' : 'eager'}
-                        class="w-full rounded-lg z-(--z-index-work-thumbnail) relative"
-                        width="720"
-                        height="540"
-                        src={project.data.thumbnail.src}
-                        alt={project.data.thumbnail.alt}
-                        /> : <div style="aspect-ratio: 4 / 3;" class="w-full text-center bg-primary-100 text-primary-600 flex justify-center items-center z-(--z-index-work-thumbnail) relative text-4xl font-bold">{project.data.title}</div>
+                    {(() => {
+                      if (project.data.video) {
+                        return (
+                          <video
+                            style="aspect-ratio: 4 / 3;"
+                            class="rounded-lg z-(--z-index-work-thumbnail) relative"
+                            width="720"
+                            height="540"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            poster={project.data?.thumbnail?.src || ''}
+                          >
+                            {project.data.video.map((source) => (
+                              <source src={source.src} type={source.type} />
+                            ))}
+                          </video>
+                        );
+                      } else if (project.data?.thumbnail?.src) {
+                        return (
+                          <img
+                            loading={index >= imagesInsideView ? 'lazy' : 'eager'}
+                            class="w-full rounded-lg z-(--z-index-work-thumbnail) relative"
+                            width="720"
+                            height="540"
+                            src={project.data.thumbnail.src}
+                            alt={project.data.thumbnail.alt}
+                          />
+                        );
+                      } else {
+                        return (
+                          <div 
+                            style="aspect-ratio: 4 / 3;" 
+                            class="w-full text-center bg-primary-100 text-primary-600 flex justify-center items-center z-(--z-index-work-thumbnail) relative text-4xl font-bold"
+                          >
+                            {project.data.title}
+                          </div>
+                        );
                       }
-                      </div>
+                    })()}
+                  </div>
 
                   <h3 class="text-lg font-medium">
                     {project.data?.link?.url ? (
