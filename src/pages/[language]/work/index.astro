@@ -111,7 +111,7 @@ export function getStaticPaths() {
             sortedProjects.map((project, index) => {
               const imagesInsideView = 2;
               return (
-                <li data-tech={project.data.tech} class="relative overflow-hidden">
+                <li data-tech={project.data.tech} class="relative overflow-hidden flex flex-col gap-4">
                   {
                     project.data.isWorkInProgress && (
                       <div class="absolute top-0 right-0 z-(--z-index-work-ribbon)">
@@ -125,7 +125,7 @@ export function getStaticPaths() {
                   {project.data.video ? (
                     <video
                       style="aspect-ratio: 4 / 3;"
-                      class="mb-6 rounded-lg z-(--z-index-work-thumbnail) relative"
+                      class="rounded-lg z-(--z-index-work-thumbnail) relative"
                       width="720"
                       height="540"
                       autoplay
@@ -142,7 +142,7 @@ export function getStaticPaths() {
               
                       <img
                         loading={index >= imagesInsideView ? 'lazy' : 'eager'}
-                        class="w-full mb-6 rounded-lg z-(--z-index-work-thumbnail) relative"
+                        class="w-full rounded-lg z-(--z-index-work-thumbnail) relative"
                         width="720"
                         height="540"
                         src={project.data.thumbnail.src}
@@ -151,7 +151,7 @@ export function getStaticPaths() {
                       )}
                       </div>
 
-                  <h3 class="mb-4 text-lg font-medium">
+                  <h3 class="text-lg font-medium">
                     {project.data?.link?.url ? (
                       <a href={project.data.link.url}>{project.data.title}</a>
                     ) : (
