@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { favicons } from '@/utility/config.ts';
 
 // https://web.dev/articles/add-manifest
 // eslint-disable-next-line import/prefer-default-export
@@ -7,9 +8,9 @@ export const GET: APIRoute = () =>
     JSON.stringify({
       name: "Wei's Website",
       icons: [
-        { src: 'assets/global/favicon/android-chrome-192x192.png', type: 'image/png', sizes: '192x192' },
-        { src: 'assets/global/favicon/android-chrome-512x512.png', type: 'image/png', sizes: '512x512' },
-        { src: 'assets/global/favicon/favicon-512x512.png', type: 'image/png', sizes: '512x512', purpose: 'maskable' },
+        { src: favicons['android-chrome-192'], type: 'image/png', sizes: '192x192' },
+        { src: favicons['android-chrome-512'], type: 'image/png', sizes: '512x512' },
+        { src: favicons['512'], type: 'image/png', sizes: '512x512', purpose: 'maskable' },
       ],
       start_url: '/',
       display: 'fullscreen',
