@@ -4,7 +4,7 @@ import '@/styles/global.css';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import { useTranslations, type LanguageKey, languageTags, defaultLocale, prefixDefaultLocale } from '@/i18n/i18n.ts';
-import { favicons } from '@/utility/config.ts';
+import { favicons, globalOgImage } from '@/utility/config.ts';
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 
@@ -19,7 +19,6 @@ const globalTitle = `${title || t('Head-1')} - ${t('Head-2')}`;
 const globalDescription = `${
   description || t('Head-3')
 }`;
-const globalOgImage = '/assets/global/og-image.jpg';
 const globalOgImageAlt = t('Head-4');
 const currentLocale = Astro.currentLocale as LanguageKey;
 ---
@@ -35,10 +34,10 @@ const currentLocale = Astro.currentLocale as LanguageKey;
       basic: {
         title: `${globalTitle}`,
         type: 'website',
-        image: `${globalOgImage}`,
+        image: `${globalOgImage.url}`,
       },
       image: {
-        type: 'image/jpeg',
+        type: `${globalOgImage.type}`,
         alt: `${globalOgImageAlt}`,
         height: 630,
         width: 1200,
@@ -47,7 +46,7 @@ const currentLocale = Astro.currentLocale as LanguageKey;
     twitter={{
       title: `${globalTitle}`,
       description: `${globalDescription}`,
-      image: `${globalOgImage}`,
+      image: `${globalOgImage.url}`,
       imageAlt: `${globalOgImageAlt}`,
     }}
     extend={{
