@@ -17,10 +17,12 @@ export const collections = {
           sourceCodeUrl: z.string().optional(),
         })
         .optional(),
-      thumbnail: z.object({
-        src: z.string(),
-        alt: z.string(),
-      }),
+      thumbnail: z
+        .object({
+          src: z.string(),
+          alt: z.string(),
+        })
+        .optional(),
       video: z.array(z.object({ src: z.string(), type: z.string() })).optional(),
       tech: z.array(allowedTechsEnum),
       themeColor: z.string().min(4).max(9).regex(/^#/).default('#fff'),
