@@ -1,6 +1,10 @@
 name: Deploy Pipeline
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [content-updated]
 
 jobs:
   # ESLint + Prettier
