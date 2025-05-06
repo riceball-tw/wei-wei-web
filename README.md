@@ -1,6 +1,9 @@
+
 # [Letter](https://weweweb.pages.dev/en) - Astro Portfolio Theme
 
 > Compose Your Digital Story, Letter by Letter
+
+![Letter Theme Demo](https://bucket-wei.webdong.dev/readme/letter-readme.jpg)
 
 **Letter** is a simple opinionated theme designed for developers and digital creatives, focus on simplicity and easy to use. Share your [online resume](https://weweweb.pages.dev/en/resume/) or [portfolio](https://weweweb.pages.dev/en/work/) even [FAQ](https://weweweb.pages.dev/en/faq/) through fully typed markdown. Since I am a frontend developer, why not create a portfolio website myself? 
 
