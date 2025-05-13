@@ -64,7 +64,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
   </div>
 </footer>
 
-<script is:inline>
+<script is:inline define:vars={{ popoverText: t('Footer-7')}}>
   document.querySelector('[data-mail-btn]').addEventListener('click', (e) => {
     navigator.clipboard.writeText(e.target.dataset.mailBtn);
 
@@ -72,7 +72,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
     function showPopover(targetElement) {
       targetElement.disabled = true;
       const popover = document.createElement('div');
-      popover.textContent = '✔ 已複製到剪貼簿';
+      popover.textContent = popoverText;
       targetElement.appendChild(popover);
       popover.style.position = 'absolute';
       popover.style.fontSize = '1rem';
