@@ -14,3 +14,35 @@ export const globalOgImage = {
   width: 1200,
   type: 'image/jpeg',
 };
+
+export const website = {
+  name: 'WeiWeb',
+  emojiStatus: '🍙',
+  socials: [
+    {
+      name: 'Blog',
+      url: 'https://www.webdong.dev/',
+    },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/riceball-tw',
+    },
+    {
+      name: 'Threads',
+      url: 'https://www.threads.net/@webdong.dev',
+    },
+    {
+      name: 'Behance',
+      url: 'https://www.behance.net/riceballwei',
+    },
+    {
+      name: 'CakeResume',
+      url: 'https://www.cakeresume.com/me/Riceball-wei',
+    },
+  ],
+  get copyright() {
+    return `© ${new Date().getFullYear()} ${
+      this.name
+    } All rights reserved. Theme <a class="underline" href='https://github.com/riceball-tw/letter'>Letter</a> licensed under MIT.`;
+  },
+};

@@ -1,29 +1,7 @@
 ---
 import { defaultLocale, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-
-const socials = [
-  {
-    name: 'Blog',
-    url: 'https://www.webdong.dev/',
-  },
-  {
-    name: 'GitHub',
-    url: 'https://github.com/riceball-tw',
-  },
-  {
-    name: 'Threads',
-    url: 'https://www.threads.net/@webdong.dev'
-  },
-  {
-    name: 'Behance',
-    url: 'https://www.behance.net/riceballwei',
-  },
-  {
-    name: 'CakeResume',
-    url: 'https://www.cakeresume.com/me/Riceball-wei',
-  },
-];
+import { website } from '@/utility/config'
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 ---
@@ -42,7 +20,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
       <h3 class="text-lg font-medium mb-4 sr-only lg:not-sr-only">{t('Footer-6')}</h3>
       <ul>
         {
-          socials.map((social) => (
+          website.socials.map((social) => (
             <li>
               <a
                 class="hover:bg-primary-100 rounded-full transition-colors p-4 ml-0 lg:-ml-4 inline-block"
@@ -58,9 +36,8 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
     </div>
   </div>
   <div class="flex justify-between">
-    <p class="opacity-80">All Right Reserved 2023-PRESENT © 黃宗瑋</p>
-
-    <span>🍙</span>
+    <p class="opacity-80" set:html={website.copyright} />
+    <span>{ website.emojiStatus }</span>
   </div>
 </footer>
 
