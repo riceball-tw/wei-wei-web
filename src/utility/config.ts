@@ -17,6 +17,7 @@ export const globalOgImage = {
 
 export const website = {
   name: 'WeiWeb',
+  email: 'bottle200918@gmail.com',
   emojiStatus: '🍙',
   socials: [
     {
