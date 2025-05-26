@@ -6,6 +6,9 @@ import { languages, prefixDefaultLocale, defaultLocale } from './src/i18n/i18n.t
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: {
+    prefetchAll: true,
+  },
   site: 'https://weweweb.pages.dev',
   build: {
     inlineStylesheets: 'always',
