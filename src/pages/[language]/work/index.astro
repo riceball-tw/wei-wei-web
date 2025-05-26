@@ -37,9 +37,9 @@ export function getStaticPaths() {
 
 <script is:inline>
 
-document.addEventListener("astro:page-load", e => {
+document.addEventListener("astro:page-load", pageLoadEvent => {
   
-  const isOnWorkPage = e.target.location.pathname.includes('work') 
+  const isOnWorkPage = pageLoadEvent.target.location.pathname.includes('work') 
   if (!isOnWorkPage) return
 
   const activedTechs = []
