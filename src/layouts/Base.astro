@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import { regionTags, useTranslations, type LanguageKey, languageTags, defaultLocale, prefixDefaultLocale } from '@/i18n/i18n.ts';
 import { favicons, globalOgImage } from '@/utility/config.ts';
+import { ClientRouter } from "astro:transitions";
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 
@@ -21,6 +22,26 @@ const globalDescription = `${
 }`;
 const globalOgImageAlt = t('Head-4');
 const currentLocale = Astro.currentLocale as LanguageKey;
+
+// Custom View Transition Animation
+const anim = {
+  old: {
+    name: "change-page",
+    duration: "0.3s",
+    easing: "ease-out",
+    direction: "reverse",
+  },
+  new: {
+    name: "change-page",
+    duration: "0.3s",
+    easing: "ease-out",
+  },
+};
+
+const customTransition = {
+  forwards: anim,
+  backwards: anim,
+};
 
 function getPathnameWithoutLocale(pathname: string) {
   return pathname.replace(`/${Astro.currentLocale}`, '').replace(/\/?$/, '/');
@@ -103,13 +124,14 @@ function getPathnameWithoutLocale(pathname: string) {
     <link rel="apple-touch-icon" sizes="180x180" href={favicons['apple-touch-icon']}/>
     <link rel="icon" type="image/png" sizes="32x32" href={favicons['32']} />
     <link rel="icon" type="image/png" sizes="16x16" href={favicons['16']} />
+    <ClientRouter fallback="swap" />
   </head>
   <body
     class="print:bg-[url('')] bg-[url('/assets/global/natural-paper.webp')] bg-fixed"
     style='background-color: #f5f5f5;'
   >
     <Navbar />
-    <div style="margin-top: calc(var(--navbar-height) * -1);">
+    <div transition:animate={customTransition} style="margin-top: calc(var(--navbar-height) * -1);">
       <slot />
     </div>
     <Footer />
@@ -120,6 +142,22 @@ function getPathnameWithoutLocale(pathname: string) {
   @media print {
     .no-print, .no-print * {
         display: none !important;
+    }
+  }
+
+  @keyframes change-page {
+    0% {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+
+    50% {
+      opacity: 0.1;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 </style>

@@ -35,8 +35,14 @@ export function getStaticPaths() {
   }
 </style>
 
-<script>
-  const activedTechs: string[] = []
+<script is:inline>
+
+document.addEventListener("astro:page-load", pageLoadEvent => {
+  
+  const isOnWorkPage = pageLoadEvent.target.location.pathname.includes('work') 
+  if (!isOnWorkPage) return
+
+  const activedTechs = []
   const filterElement = document.querySelector('[data-filter]')
   const worksElement = document.querySelector('[data-works]')
 
@@ -52,7 +58,7 @@ export function getStaticPaths() {
 
     // Update card
     worksElement?.querySelectorAll('[data-tech]').forEach(work => {
-      const workTechs = (work as HTMLElement).dataset.tech?.split(",") || []
+      const workTechs = (work).dataset.tech?.split(",") || []
 
       if (activedTechs.length === 0) {
         work.classList.remove('hidden')
@@ -67,9 +73,9 @@ export function getStaticPaths() {
     })
   }
 
-  filterElement?.addEventListener('click', (e: Event) => {
+  filterElement?.addEventListener('click', (e) => {
     if (!e.target) return
-    const targetElement = e.target as HTMLElement
+    const targetElement = e.target
 
     if (targetElement.tagName === 'BUTTON') {
       const tech = targetElement.innerText
@@ -84,6 +90,8 @@ export function getStaticPaths() {
       updateTechList()
     }
   })
+});
+
 </script>
 
 <Base title={t('Navbar-3')}>
