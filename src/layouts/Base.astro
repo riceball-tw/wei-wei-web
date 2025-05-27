@@ -51,7 +51,7 @@ function getPathnameWithoutLocale(pathname: string) {
 <!DOCTYPE html>
 <html style={
   `--globalHighlightTextureImage: url(${website.globalHighlightTextureImage})`
-} class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang={languageTags[currentLocale]}>
+} class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang={languageTags[currentLocale]} translate="no">
   <head>
     <SEO
     charset="UTF-8"
@@ -120,6 +120,10 @@ function getPathnameWithoutLocale(pathname: string) {
           name: 'viewport',
           content: 'width=device-width, initial-scale=1',
         },
+        {
+          name: 'google',
+          content: 'notranslate'
+        }
       ],
     }}
   />
