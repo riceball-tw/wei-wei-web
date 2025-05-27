@@ -42,29 +42,31 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
 </footer>
 
 <script is:inline define:vars={{ popoverText: t('Footer-7')}}>
-  document.querySelector('[data-mail-btn]').addEventListener('click', (e) => {
-    navigator.clipboard.writeText(e.target.dataset.mailBtn);
+  document.addEventListener("astro:page-load", () => {
+    document.querySelector('[data-mail-btn]').addEventListener('click', (e) => {
+      navigator.clipboard.writeText(e.target.dataset.mailBtn);
 
-    /* eslint-disable no-param-reassign */
-    function showPopover(targetElement) {
-      targetElement.disabled = true;
-      const popover = document.createElement('div');
-      popover.textContent = popoverText;
-      targetElement.appendChild(popover);
-      popover.style.position = 'absolute';
-      popover.style.fontSize = '1rem';
-      popover.style.letterSpacing = '0.05rem';
-      popover.style.whiteSpace = 'nowrap';
-      popover.style.left = '50%';
-      popover.style.transform = 'translate(-50%, 0%)';
+      /* eslint-disable no-param-reassign */
+      function showPopover(targetElement) {
+        targetElement.disabled = true;
+        const popover = document.createElement('div');
+        popover.textContent = popoverText;
+        targetElement.appendChild(popover);
+        popover.style.position = 'absolute';
+        popover.style.fontSize = '1rem';
+        popover.style.letterSpacing = '0.05rem';
+        popover.style.whiteSpace = 'nowrap';
+        popover.style.left = '50%';
+        popover.style.transform = 'translate(-50%, 0%)';
 
-      setTimeout(() => {
-        targetElement.removeChild(popover);
-        targetElement.disabled = false;
-      }, 1000);
-    }
-    /* eslint-enable no-param-reassign */
+        setTimeout(() => {
+          targetElement.removeChild(popover);
+          targetElement.disabled = false;
+        }, 1000);
+      }
+      /* eslint-enable no-param-reassign */
 
-    showPopover(e.target);
+      showPopover(e.target);
+    });
   });
 </script>
