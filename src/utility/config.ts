@@ -20,6 +20,7 @@ export const website = {
   email: 'bottle200918@gmail.com',
   emojiStatus: '🍙',
   globalBackgroundTextureImage: 'https://bucket-wei.webdong.dev/global/natural-paper.webp',
+  globalHighlightTextureImage: 'https://bucket-wei.webdong.dev/global/highlight-texture.webp',
   socials: [
     {
       name: 'Blog',

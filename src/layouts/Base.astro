@@ -49,7 +49,9 @@ function getPathnameWithoutLocale(pathname: string) {
 ---
 
 <!DOCTYPE html>
-<html class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang={languageTags[currentLocale]}>
+<html style={
+  `--globalHighlightTextureImage: url(${website.globalHighlightTextureImage})`
+} class="font-sans-serif text-primary-900 selection:bg-accent/40 selection:text-black" lang={languageTags[currentLocale]}>
   <head>
     <SEO
     charset="UTF-8"
