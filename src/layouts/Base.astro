@@ -4,7 +4,7 @@ import '@/styles/global.css';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import { regionTags, useTranslations, type LanguageKey, languageTags, defaultLocale, prefixDefaultLocale } from '@/i18n/i18n.ts';
-import { favicons, globalOgImage } from '@/utility/config.ts';
+import { favicons, globalOgImage, website } from '@/utility/config.ts';
 import { ClientRouter } from "astro:transitions";
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
@@ -127,8 +127,11 @@ function getPathnameWithoutLocale(pathname: string) {
     <ClientRouter fallback="swap" />
   </head>
   <body
-    class="print:bg-[url('')] bg-[url('https://bucket-wei.webdong.dev/global/natural-paper.webp')] bg-fixed"
-    style='background-color: #f5f5f5;'
+    class="bg-fixed print:bg-none"
+    style={`
+    background-color: #f5f5f5;
+    background-image: url('${website.globalBackgroundTextureImage}')
+    `}
   >
     <Navbar />
     <div transition:animate={customTransition} style="margin-top: calc(var(--navbar-height) * -1);">

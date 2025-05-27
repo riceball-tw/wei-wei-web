@@ -19,6 +19,7 @@ export const website = {
   name: 'WeiWeb',
   email: 'bottle200918@gmail.com',
   emojiStatus: '🍙',
+  globalBackgroundTextureImage: 'https://bucket-wei.webdong.dev/global/natural-paper.webp',
   socials: [
     {
       name: 'Blog',
