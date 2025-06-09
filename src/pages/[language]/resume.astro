@@ -259,6 +259,11 @@ export function getStaticPaths() {
 </Base>
   
 <style is:inline>
+  body {
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/print-color-adjust */
+    print-color-adjust: exact;
+  }
+  
   .a4 .name {
     font-size: 1.6rem;
   }
