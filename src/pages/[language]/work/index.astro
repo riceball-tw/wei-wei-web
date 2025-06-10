@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.astro';
+import { Icon } from 'astro-icon/components';
 
 import { languages, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import type { AllowedTechsEnum } from '@/types/collections'
@@ -20,6 +21,46 @@ const allProjectTechs = publicCurrentLangProjects.reduce<AllowedTechsEnum[]>((ac
   return [...new Set([...acc, ...techs])]
 }, []).sort((a, b) => a.localeCompare(b))
 
+type TechGroupIds = 'Work-TechGroup-Vue' | 'Work-TechGroup-React' | 'Work-TechGroup-Testing' | 'Work-TechGroup-Database' | 'Work-TechGroup-UserInterface';
+
+type TechGroup = {
+  id: TechGroupIds,
+  relatedTechs: AllowedTechsEnum[],
+  icon: string,
+  themeColor: string,
+} 
+
+
+const allTechGroups = [
+{
+  id: 'Work-TechGroup-UserInterface',
+  relatedTechs: ['Bootstrap', 'Chart.js', 'Daisy UI', 'Framer Motion', 'GSAP', 'Shadcn UI'],
+  icon: 'material-symbols:layers-outline-rounded',
+  themeColor: '#5c038f',
+},  
+{
+  id: 'Work-TechGroup-Vue',
+  relatedTechs: ['Nuxt(Vue)', 'Pinia', 'Vue', 'Vue Router'],
+  icon: 'mdi:vuejs',
+  themeColor: '#33a06f',
+}, {
+  id: 'Work-TechGroup-React',
+  relatedTechs: ['Next(React)', 'React', 'React Router'],
+  icon: 'mdi:react',
+  themeColor: '#087ea4',
+}, {
+  id: 'Work-TechGroup-Testing',
+  relatedTechs: ['Playwright', 'Vitest', 'Cypress', 'Lighthouse CI'],
+  icon: 'material-symbols:thermostat-rounded',
+  themeColor: '#608f03',
+}, {
+  id: 'Work-TechGroup-Database',
+  relatedTechs: ['Supabase(Postgres)', 'MySQL', 'Drizzle ORM'],
+  icon: 'material-symbols:database-outline',
+  themeColor: '#03118f',
+},
+] satisfies TechGroup[]
+
 export function getStaticPaths() {
   return Object.keys(languages).map((language) => ({
     params: { language },
@@ -28,6 +69,26 @@ export function getStaticPaths() {
 ---
 
 <style is:inline>
+  .active[data-group-id] {
+    background-color: var(--themeColor);
+  }
+
+  [data-group-id]:hover {
+    color: var(--themeColor);
+  }
+
+  .active[data-group-id]:hover {
+    color: white;
+  }
+
+  [data-group-id]:hover [data-group-icon] {
+    color: var(--themeColor);
+  }
+
+  .active[data-group-id]:hover [data-group-icon] {
+    color: currentColor;
+  }
+
   .active {
     background-color: var(--color-primary-900);
     color: var(--color-primary-50);
@@ -35,14 +96,15 @@ export function getStaticPaths() {
   }
 </style>
 
-<script is:inline>
-
+<script is:inline define:vars={{
+  allTechGroups
+}}>
 document.addEventListener("astro:page-load", pageLoadEvent => {
-  
   const isOnWorkPage = pageLoadEvent.target.location.pathname.includes('work') 
   if (!isOnWorkPage) return
 
-  const activedTechs = []
+  let activedTechs = []
+  const groupFilterElement = document.querySelector('[data-group-filter]')
   const filterElement = document.querySelector('[data-filter]')
   const worksElement = document.querySelector('[data-works]')
 
@@ -50,6 +112,18 @@ document.addEventListener("astro:page-load", pageLoadEvent => {
     // Update filter buttons
     filterElement?.querySelectorAll('button').forEach(button => {
       if (activedTechs.includes(button.innerText)) {
+        button.classList.add('active')
+      } else {
+        button.classList.remove('active')
+      }
+    })
+
+    // Update group filter buttons
+    groupFilterElement?.querySelectorAll('button').forEach(button => {
+      const techId = button.dataset.groupId
+      const relatedTechs = allTechGroups.find(group => group.id === techId)?.relatedTechs || []
+      const isActive = relatedTechs.every(tech => activedTechs.includes(tech))
+      if (isActive) {
         button.classList.add('active')
       } else {
         button.classList.remove('active')
@@ -90,6 +164,22 @@ document.addEventListener("astro:page-load", pageLoadEvent => {
       updateTechList()
     }
   })
+
+  groupFilterElement?.addEventListener('click', e => {
+    if (!e.target) return
+    const targetElement = e.target
+
+    if (targetElement.tagName === 'BUTTON') {
+      const techId = targetElement.dataset.groupId
+      const relatedTechs = allTechGroups.find(group => group.id === techId)?.relatedTechs || []
+      
+      activedTechs = [...relatedTechs]
+
+      updateTechList()
+    }
+  })
+
+
 });
 
 </script>
@@ -104,15 +194,28 @@ document.addEventListener("astro:page-load", pageLoadEvent => {
       <section class="container mx-auto flex flex-col gap-16">
         <h2 class="sr-only">{t('Work-3', {number: `${publicCurrentLangProjects.length}`})}</h2>
 
-        <ul class="flex flex-wrap gap-2" data-filter>
+        <ul class="flex flex-wrap gap-2" data-group-filter>
           {
-            allProjectTechs.map(tech => <li>
-            <button class="cursor-pointer border-2 py-1 md:py-2 px-2 md:px-4 border-primary-50 rounded-full text-xs lg:text-sm" type="button">
-              { tech }
-            </button>
-          </li>)
+            allTechGroups.map(techGroup => <li>
+                <button data-group-id={techGroup.id} style={
+                  `--themeColor: ${techGroup.themeColor};`
+                } class="hover:border-(--themeColor)/60 hover:bg-(--themeColor)/10 cursor-pointer border-2 py-1 md:py-2 px-3 md:px-4 border-primary-50 rounded-full text-md inline-flex items-center gap-4 transition" type="button">
+                  <Icon class="pointer-events-none size-8 md:size-10" data-group-icon size={32} name={techGroup.icon} />
+                  { t(techGroup.id) }
+                </button>
+              </li>)
           }
         </ul>
+
+          <ul class="flex flex-wrap gap-2" data-filter>
+            {
+              allProjectTechs.map(tech => <li>
+              <button class="cursor-pointer border-2 py-1 md:py-2 px-2 md:px-4 border-primary-50 rounded-full text-xs lg:text-sm" type="button">
+                { tech }
+              </button>
+            </li>)
+            }
+          </ul>
 
         <ul data-works class="grid md:grid-cols-2 grid-cols-1 gap-8">
           {
