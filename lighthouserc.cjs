@@ -11,8 +11,9 @@ module.exports = {
       ],
     },
     upload: {
+      // target: 'temporary-public-storage'
       target: 'lhci',
-      serverBaseUrl: 'https://lhci-weweweb.zeabur.app/',
+      serverBaseUrl: process.env.LHCI_BASE_URL,
       token: process.env.LHCI_TOKEN,
     },
   },
