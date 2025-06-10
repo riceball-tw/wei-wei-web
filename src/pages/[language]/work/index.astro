@@ -21,7 +21,7 @@ const allProjectTechs = publicCurrentLangProjects.reduce<AllowedTechsEnum[]>((ac
   return [...new Set([...acc, ...techs])]
 }, []).sort((a, b) => a.localeCompare(b))
 
-type TechGroupIds = 'Work-TechGroup-Vue' | 'Work-TechGroup-React' | 'Work-TechGroup-Testing' | 'Work-TechGroup-Database' | 'Work-TechGroup-UserInterface';
+type TechGroupIds = 'Work-TechGroup-Vue' | 'Work-TechGroup-React' | 'Work-TechGroup-Testing' | 'Work-TechGroup-Database' | 'Work-TechGroup-UserInterface' | 'Work-TechGroup-all';
 
 type TechGroup = {
   id: TechGroupIds,
@@ -32,6 +32,12 @@ type TechGroup = {
 
 
 const allTechGroups = [
+{
+  id: 'Work-TechGroup-all',
+  relatedTechs: [],
+  icon: 'material-symbols:person-play-outline-rounded',
+  themeColor: '#171717',
+},  
 {
   id: 'Work-TechGroup-UserInterface',
   relatedTechs: ['Bootstrap', 'Chart.js', 'Daisy UI', 'Framer Motion', 'GSAP', 'Shadcn UI'],
@@ -122,7 +128,7 @@ document.addEventListener("astro:page-load", pageLoadEvent => {
     groupFilterElement?.querySelectorAll('button').forEach(button => {
       const techId = button.dataset.groupId
       const relatedTechs = allTechGroups.find(group => group.id === techId)?.relatedTechs || []
-      const isActive = relatedTechs.every(tech => activedTechs.includes(tech))
+      const isActive = relatedTechs.every(tech => activedTechs.includes(tech)) && relatedTechs.length > 0
       if (isActive) {
         button.classList.add('active')
       } else {
