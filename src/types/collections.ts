@@ -38,6 +38,10 @@ const allowedTechs = [
   'Vue',
   'Vue Router',
   'Zod',
+  'vee-validate',
+  'GitHub Pages',
+  'Netlify',
+  'Cloudflare Workers',
 ] as const;
 
 // eslint-disable-next-line import/prefer-default-export
