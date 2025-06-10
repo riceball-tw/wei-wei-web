@@ -120,7 +120,7 @@ document.addEventListener("astro:page-load", pageLoadEvent => {
 
     // Update group filter buttons
     groupFilterElement?.querySelectorAll('button').forEach(button => {
-      const techId = button.dataset['groupId']
+      const techId = button.dataset.groupId
       const relatedTechs = allTechGroups.find(group => group.id === techId)?.relatedTechs || []
       const isActive = relatedTechs.every(tech => activedTechs.includes(tech))
       if (isActive) {
@@ -169,10 +169,8 @@ document.addEventListener("astro:page-load", pageLoadEvent => {
     if (!e.target) return
     const targetElement = e.target
 
-    console.log(targetElement.tagName)
-
     if (targetElement.tagName === 'BUTTON') {
-      const techId = targetElement.dataset['groupId']
+      const techId = targetElement.dataset.groupId
       const relatedTechs = allTechGroups.find(group => group.id === techId)?.relatedTechs || []
       
       activedTechs = [...relatedTechs]
@@ -198,17 +196,14 @@ document.addEventListener("astro:page-load", pageLoadEvent => {
 
         <ul class="flex flex-wrap gap-2" data-group-filter>
           {
-            allTechGroups.map(techGroup => {
-
-              return <li>
+            allTechGroups.map(techGroup => <li>
                 <button data-group-id={techGroup.id} style={
                   `--themeColor: ${techGroup.themeColor};`
                 } class="hover:border-(--themeColor)/60 hover:bg-(--themeColor)/10 cursor-pointer border-2 py-1 md:py-2 px-3 md:px-4 border-primary-50 rounded-full text-md inline-flex items-center gap-4 transition" type="button">
                   <Icon class="pointer-events-none size-8 md:size-10" data-group-icon size={32} name={techGroup.icon} />
                   { t(techGroup.id) }
                 </button>
-              </li>
-            })
+              </li>)
           }
         </ul>
 
