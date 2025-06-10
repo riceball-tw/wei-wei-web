@@ -96,7 +96,7 @@ jobs:
       - name: Run Lighthouse CI
         env:
           LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
-          LHCI_BASE_URL: ${{ vars.LHCI_BASE_URL }}
+          LHCI_BASE_URL: ${{ vars.PUBLIC_LHCI_BASE_URL }}
         run: pnpm dlx @lhci/cli@0.14.x autorun
 
   deploy:
